@@ -30,7 +30,8 @@ div.main-container{
 	padding:20px;
 }
 form.registerForm,
-form.loginForm{
+form.loginForm,
+form.registerSuccesfulForm{
 	margin:0 auto;
 	display:block;
 	width:650px;
@@ -44,11 +45,19 @@ form.registerForm label
 	color:#E0E6F8;
 	text-align:right
 }
-form.registerForm input{
+form.registerForm input,
+form.registerSuccesfulForm input{
 	width:300px;
 	font-size:1.2em;
 	border-radius:3px;
 	background-color:#E0E6F8
+}
+form.registerSuccesfulForm input{
+	display:inline-block;
+	margin-left:160px;
+}
+form.registerSuccesfulForm p{
+	color:#E0E6F8;
 }
 form.loginForm label
 {
@@ -75,4 +84,12 @@ form.loginForm span,
 form.registerForm span{
 	font-size:1.5em;
 	color:#E0E6F8
+}
+p.ui-error-validation{
+	background-color:#FE2E2E;
+	color:#F8E0E0;
+	border-radius:4px;
+}
+.ui-color-standard{
+	color:#F8E0E0;
 }

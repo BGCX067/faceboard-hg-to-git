@@ -5,23 +5,21 @@
 <title>Bienvenido a ClassBlast - Login</title>
 </head>
 <body>
-	<g:form action="login" name="loginForm" class="loginForm">
-		<g:hasErrors bean="${controller}">
-			<ul>
-				<g:eachError var="err" bean="${controller}">
-					<li>
-						${err}
-					</li>
-				</g:eachError>
-			</ul>
-		</g:hasErrors>
+	<g:form action="loginProcess" name="loginForm" class="loginForm">
 		<g:img dir="images/icons" file="login-48.ico" class="middle"
 			class="middle leftSideForm" />
 		<span>Login</span>
 		<br />
 		<br />
+		<g:if test="${validationErrors.size()>=1}">
+			<p class="ui-error-validation">
+				<g:img dir="images/icons" file="validerror-32.ico" class="middle" />
+				${validationErrors[0]}
+			</p>
+			<br />
+		</g:if>
 		<label for="login">Usuario</label>
-		<g:textField name="login" />
+		<g:textField name="login" value="${username}"/>
 		<br />
 		<br />
 		<label for="password">Contraseña</label>

@@ -9,6 +9,7 @@ class UrlMappings {
         "/"(controller:"main")
 		"/user/register/"(controller:"user.register()")
 		"/user/login/"(controller:"user.login()")
+		"/construction"(view:"/construction")
         "500"(view:'/error')
 	}
 }

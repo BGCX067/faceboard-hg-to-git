@@ -6,5 +6,11 @@
 </head>
 <body>
 	Vista para interfaz principal...
+	<g:link controller="user" action="login">
+	Ingresa
+	</g:link>
+	<g:link controller="user" action="register">
+	Regístrate
+	</g:link>
 </body>
 </html>
