@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<location>/media/DATOS/unal/unal2013II/ingesoft2/classblast/ClassBlast-web/target/work/plugins</location>
+			<location>C:/GGTS/Workspace/ClassBast/ClassBlast-web/target/work/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>
