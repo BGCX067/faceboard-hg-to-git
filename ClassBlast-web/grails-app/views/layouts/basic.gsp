@@ -18,7 +18,7 @@
 </head>
 <body>
 	<p style="font-size: 2.2em; color: #E0F8EC">
-		<g:img dir="images" file="pending-50x50.jpg" class="middle" />
+		<g:img height="40px" dir="images" file="propuesta 3.jpg" class="middle" />
 		<span style="opacity: 0.6">Classblast</span>
 	</p>
 	<div class="main-container">

@@ -111,7 +111,7 @@ class UserController {
 		this.errorExecList=[]
 	}
 	def myprofile(){
-		render "logueado"
+		redirect url:"/user/home"
 	}
 	def cleanActivity(){
 		visitNumber++
