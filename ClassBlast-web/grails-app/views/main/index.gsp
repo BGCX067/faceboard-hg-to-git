@@ -7,7 +7,7 @@
 <body>
 	<table width="100%" border="1" height="400px" bordercolor="#ffffff">
   <tr>
-    <td height="300px" colspan="4" ><center><g:img dir="images" file="Propuesta 3.jpg" class="middle" /></center></td>
+    <td height="300px" colspan="4" ><center><g:img dir="images" file="Propuesta3.png" class="middle" /></center></td>
   </tr>
   <tr>
     <td width="25%"><center><b>Explora</b></center></td>

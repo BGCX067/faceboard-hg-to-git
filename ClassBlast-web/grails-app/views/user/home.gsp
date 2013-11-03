@@ -5,11 +5,18 @@
 <title>Bienvenido a ClassBlast - Inicio</title>
 </head>
 <body>
-	<b>HOME</b>
-	<br><b><g:link controller="main">
+	<table width="100%">
+	<tr>
+	<td width="85%"><b>HOME</b></td>
+	<td><b><g:link controller="main">
     <g:img height="50px" dir="images" file="logout.jpg" class="middle" />
 	Cerrar Sesión
-	</g:link></center></b>
+	</g:link></b>
+	</td>
+	</tr>
+	</table>
+	
+	
 	<table width="100%" border="1" height="400px" bordercolor="#ffffff">
   <tr>
     <td height="400px" width="33%"><center><b>Actividad Reciente</b></center></td>

@@ -18,8 +18,8 @@
 </head>
 <body>
 	<p style="font-size: 2.2em; color: #E0F8EC">
-		<g:img height="40px" dir="images" file="propuesta 3.jpg" class="middle" />
-		<span style="opacity: 0.6">Classblast</span>
+		<g:img height="40px" dir="images" file="propuesta3.png" class="middle" />
+		<span style="opacity: 0.6"></span>
 	</p>
 	<div class="main-container">
 		<g:layoutBody />
