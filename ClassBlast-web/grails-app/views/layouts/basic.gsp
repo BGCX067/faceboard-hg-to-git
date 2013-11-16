@@ -13,13 +13,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'basic.css')}"
 	type="text/css">
+<link rel="shortcut icon" href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
 <g:layoutHead />
 <r:layoutResources />
 </head>
 <body>
 	<p style="font-size: 2.2em; color: #E0F8EC">
-		<g:img height="40px" dir="images" file="propuesta3.png" class="middle" />
-		<span style="opacity: 0.6"></span>
+		<g:img height="40px" dir="images" file="logo.png" class="middle" />
+		<span style="opacity: 0.6">Classblast</span>
 	</p>
 	<div class="main-container">
 		<g:layoutBody />

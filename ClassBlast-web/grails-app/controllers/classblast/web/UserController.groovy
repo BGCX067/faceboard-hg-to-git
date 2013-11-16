@@ -104,6 +104,7 @@ class UserController {
 		else{
 			errorValidationList+="Usuario o contraseña incorrectas, intente de nuevo"
 		}
+		redirFromProcess=true
 		redirect action:"login"
 	}
 	def cleanStackTrace(){
@@ -133,6 +134,13 @@ class UserController {
 	}
 
 	def login(){
+		if(redirFromProcess){
+			redirFromProcess = false
+		}
+		else{
+			cleanVariables()
+			cleanStackTrace()
+		}
 		[myDomainObjList: this.findAll(),
 			validationErrors:errorValidationList,
 			execErrors:errorExecList,
