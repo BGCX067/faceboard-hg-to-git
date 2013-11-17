@@ -1,5 +1,7 @@
 package main
 
+import classblast.web.User
+
 class UserUtils {
 	def userNameExists(userName){
 		//TODO: implementar este método cuando haya conexión a base de datos
@@ -12,8 +14,20 @@ class UserUtils {
 	def registerUser(userName,email,firstName,lastName,password){
 		def securityUtils = new SecurityUtils()
 		def encryptedPassword = securityUtils.hashWithMd5(password)
-		//TODO: realizar el guardado de una nueva instancia de usuario en la base de datos
-		true
+		try{
+			def newUser = new User(
+				login:userName,
+				email:email,
+				firstName:firstName,
+				lastName:lastName,
+				registerDate:new Date(),
+				encryptedPassword:encryptedPassword)
+			newUser.save()
+			return true
+		}
+		catch(Exception e){
+			return false
+		}
 	}
 	def validateLoginData(userName,password){
 		def securityUtils = new SecurityUtils()

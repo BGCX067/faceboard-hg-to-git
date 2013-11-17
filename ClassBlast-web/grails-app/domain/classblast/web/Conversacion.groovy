@@ -10,6 +10,6 @@ class Conversacion {
 	User user1Related
 	User user2Related
 	static hasMany = [messageList:Mensaje]
-    static constraints = {
+	static constraints = {
     }
 }

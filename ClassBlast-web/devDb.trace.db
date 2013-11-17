@@ -1,0 +1,351 @@
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "APUNTE" no encontrada
+Table "APUNTE" not found; SQL statement:
+alter table apunte drop constraint FKABE737798B0DCB18 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "APUNTE" no encontrada
+Table "APUNTE" not found; SQL statement:
+alter table apunte drop constraint FKABE73779C4B67B23 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ARCHIVO" no encontrada
+Table "ARCHIVO" not found; SQL statement:
+alter table archivo drop constraint FKD368E0CC162DE400 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ARCHIVO" no encontrada
+Table "ARCHIVO" not found; SQL statement:
+alter table archivo drop constraint FKD368E0CC273F2F1A [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CARRERA" no encontrada
+Table "CARRERA" not found; SQL statement:
+alter table carrera drop constraint FK210AD176322C8D96 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CARRERA_COURSE_LIST" no encontrada
+Table "CARRERA_COURSE_LIST" not found; SQL statement:
+alter table carrera_course_list drop constraint FKA0B410F9E0F65C12 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CARRERA_COURSE_LIST" no encontrada
+Table "CARRERA_COURSE_LIST" not found; SQL statement:
+alter table carrera_course_list drop constraint FKA0B410F9B20551F0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CARRERA_COURSE_LIST" no encontrada
+Table "CARRERA_COURSE_LIST" not found; SQL statement:
+alter table carrera_course_list drop constraint FKA0B410F98066DFD2 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMENTARIO" no encontrada
+Table "COMENTARIO" not found; SQL statement:
+alter table comentario drop constraint FK9E0DE7E1B92C59D7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMENTARIO" no encontrada
+Table "COMENTARIO" not found; SQL statement:
+alter table comentario drop constraint FK9E0DE7E1273F2F1A [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CONVERSACION" no encontrada
+Table "CONVERSACION" not found; SQL statement:
+alter table conversacion drop constraint FK2C16223457797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CONVERSACION" no encontrada
+Table "CONVERSACION" not found; SQL statement:
+alter table conversacion drop constraint FK2C162234D91EB3A9 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CONVERSACION" no encontrada
+Table "CONVERSACION" not found; SQL statement:
+alter table conversacion drop constraint FK2C162234443A00E8 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CONVERSACION" no encontrada
+Table "CONVERSACION" not found; SQL statement:
+alter table conversacion drop constraint FK2C1622343522274C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CUADERNO" no encontrada
+Table "CUADERNO" not found; SQL statement:
+alter table cuaderno drop constraint FK48454C37AAF5BB0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CUADERNO" no encontrada
+Table "CUADERNO" not found; SQL statement:
+alter table cuaderno drop constraint FK48454C3785596FC [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CUADERNO" no encontrada
+Table "CUADERNO" not found; SQL statement:
+alter table cuaderno drop constraint FK48454C3C503C8C7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CUADERNO_SECCION" no encontrada
+Table "CUADERNO_SECCION" not found; SQL statement:
+alter table cuaderno_seccion drop constraint FKA7084D1A416C8BD2 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CUADERNO_SECCION" no encontrada
+Table "CUADERNO_SECCION" not found; SQL statement:
+alter table cuaderno_seccion drop constraint FKA7084D1A5A56EF71 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CURSO" no encontrada
+Table "CURSO" not found; SQL statement:
+alter table curso drop constraint FK5AA009C49E58CCA [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CURSO_FACULTAD" no encontrada
+Table "CURSO_FACULTAD" not found; SQL statement:
+alter table curso_facultad drop constraint FKBA43CFDB5DBBD052 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CURSO_FACULTAD" no encontrada
+Table "CURSO_FACULTAD" not found; SQL statement:
+alter table curso_facultad drop constraint FKBA43CFDB66B3FBE2 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CURSO_SEMESTRE" no encontrada
+Table "CURSO_SEMESTRE" not found; SQL statement:
+alter table curso_semestre drop constraint FKE47E3301329EC20C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "CURSO_SEMESTRE" no encontrada
+Table "CURSO_SEMESTRE" not found; SQL statement:
+alter table curso_semestre drop constraint FKE47E3301B1866222 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO" no encontrada
+Table "GRUPO" not found; SQL statement:
+alter table grupo drop constraint FK5E10C69D98261C7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO" no encontrada
+Table "GRUPO" not found; SQL statement:
+alter table grupo drop constraint FK5E10C69C503C8C7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO_MESAREDONDA" no encontrada
+Table "GRUPO_MESAREDONDA" not found; SQL statement:
+alter table grupo_mesaredonda drop constraint FKD57D73139EA1E32 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO_MESAREDONDA" no encontrada
+Table "GRUPO_MESAREDONDA" not found; SQL statement:
+alter table grupo_mesaredonda drop constraint FKD57D731E14F96C3 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "MENSAJE" no encontrada
+Table "MENSAJE" not found; SQL statement:
+alter table mensaje drop constraint FK38A48ADFC78CF652 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "MENSAJE" no encontrada
+Table "MENSAJE" not found; SQL statement:
+alter table mensaje drop constraint FK38A48ADFD73AC1B3 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "MESAREDONDA_USER" no encontrada
+Table "MESAREDONDA_USER" not found; SQL statement:
+alter table mesaredonda_user drop constraint FK2E4E0F03EB7048FE [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "MESAREDONDA_USER" no encontrada
+Table "MESAREDONDA_USER" not found; SQL statement:
+alter table mesaredonda_user drop constraint FK2E4E0F03BB587F02 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C57797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C5521F96 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C2ECA4A12 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C5D2AA063 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C45B3BE7E [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "NOTIFICACION" no encontrada
+Table "NOTIFICACION" not found; SQL statement:
+alter table notificacion drop constraint FK2372CE9C3522274C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PARCHE" no encontrada
+Table "PARCHE" not found; SQL statement:
+alter table parche drop constraint FKC4AB005F785596FC [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PARCHE" no encontrada
+Table "PARCHE" not found; SQL statement:
+alter table parche drop constraint FKC4AB005FC503C8C7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PARTICIPACION" no encontrada
+Table "PARTICIPACION" not found; SQL statement:
+alter table participacion drop constraint FKB5F9D2F25521F96 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PARTICIPACION" no encontrada
+Table "PARTICIPACION" not found; SQL statement:
+alter table participacion drop constraint FKB5F9D2F22ECA4A12 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PERFIL" no encontrada
+Table "PERFIL" not found; SQL statement:
+alter table perfil drop constraint FKC4E369CC653C849A [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PERFIL" no encontrada
+Table "PERFIL" not found; SQL statement:
+alter table perfil drop constraint FKC4E369CC30DBA4F0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PRIVILEGIO_ROL" no encontrada
+Table "PRIVILEGIO_ROL" not found; SQL statement:
+alter table privilegio_rol drop constraint FK8D950C6AF8750132 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PRIVILEGIO_ROL" no encontrada
+Table "PRIVILEGIO_ROL" not found; SQL statement:
+alter table privilegio_rol drop constraint FK8D950C6A5E7B4509 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PUBLICACION" no encontrada
+Table "PUBLICACION" not found; SQL statement:
+alter table publicacion drop constraint FKBFB3E7DD70017BD9 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PUBLICACION" no encontrada
+Table "PUBLICACION" not found; SQL statement:
+alter table publicacion drop constraint FKBFB3E7DD57797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PUBLICACION" no encontrada
+Table "PUBLICACION" not found; SQL statement:
+alter table publicacion drop constraint FKBFB3E7DD3522274C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ROL" no encontrada
+Table "ROL" not found; SQL statement:
+alter table rol drop constraint FK1B9CF7901DA3 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ROL" no encontrada
+Table "ROL" not found; SQL statement:
+alter table rol drop constraint FK1B9CF57797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ROL" no encontrada
+Table "ROL" not found; SQL statement:
+alter table rol drop constraint FK1B9CF37E53F8A [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ROL" no encontrada
+Table "ROL" not found; SQL statement:
+alter table rol drop constraint FK1B9CF2ECA4A12 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "ROL" no encontrada
+Table "ROL" not found; SQL statement:
+alter table rol drop constraint FK1B9CF3522274C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SOLICITUD" no encontrada
+Table "SOLICITUD" not found; SQL statement:
+alter table solicitud drop constraint FKAF52BEA457797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SOLICITUD" no encontrada
+Table "SOLICITUD" not found; SQL statement:
+alter table solicitud drop constraint FKAF52BEA43522274C [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TAREA" no encontrada
+Table "TAREA" not found; SQL statement:
+alter table tarea drop constraint FK690770157797B0 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TAREA" no encontrada
+Table "TAREA" not found; SQL statement:
+alter table tarea drop constraint FK6907701D92363D8 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TAREA" no encontrada
+Table "TAREA" not found; SQL statement:
+alter table tarea drop constraint FK6907701EB1EAEBD [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TEMA" no encontrada
+Table "TEMA" not found; SQL statement:
+alter table tema drop constraint FK3643C54DD215B7 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TIPO_ROL_PRIVILEGIO" no encontrada
+Table "TIPO_ROL_PRIVILEGIO" not found; SQL statement:
+alter table tipo_rol_privilegio drop constraint FK5ECE6135F40FEF66 [42102-170]
+11-17 10:08:22 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "TIPO_ROL_PRIVILEGIO" no encontrada
+Table "TIPO_ROL_PRIVILEGIO" not found; SQL statement:
+alter table tipo_rol_privilegio drop constraint FK5ECE6135AEAE82A2 [42102-170]
+11-17 10:14:10 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-170]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.message.DbException.get(DbException.java:135)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1391)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1366)
+	at org.h2.jdbc.JdbcConnection.getMetaData(JdbcConnection.java:308)
+	at sun.reflect.GeneratedMethodAccessor347.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.apache.tomcat.jdbc.pool.ProxyConnection.invoke(ProxyConnection.java:126)
+	at org.apache.tomcat.jdbc.pool.JdbcInterceptor.invoke(JdbcInterceptor.java:109)
+	at org.apache.tomcat.jdbc.pool.DisposableConnectionFacade.invoke(DisposableConnectionFacade.java:80)
+	at com.sun.proxy.$Proxy22.getMetaData(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.getProperty(MetaClassImpl.java:1671)
+	at groovy.lang.ExpandoMetaClass.getProperty(ExpandoMetaClass.java:1140)
+	at groovy.lang.MetaClassImpl.getProperty(MetaClassImpl.java:3408)
+	at groovy.lang.ExpandoMetaClass.getProperty(ExpandoMetaClass.java:1152)
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:174)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaClassGetPropertySite.callGetProperty(PojoMetaClassGetPropertySite.java:41)
+	at org.codehaus.groovy.grails.plugins.datasource.DataSourceGrailsPlugin.shutdownDatasource(DataSourceGrailsPlugin.groovy:279)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1085)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:909)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1030)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:909)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:730)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at groovy.lang.MetaClassImpl.invokeMethodOnGroovyObject(MetaClassImpl.java:1150)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1044)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:909)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.callCurrent(PogoMetaClassSite.java:66)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:149)
+	at org.codehaus.groovy.grails.plugins.datasource.DataSourceGrailsPlugin$_closure5_closure16.doCall(DataSourceGrailsPlugin.groovy:266)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1085)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:909)
+	at groovy.lang.Closure.call(Closure.java:411)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.callClosureForMapEntry(DefaultGroovyMethods.java:3873)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:1354)
+	at org.codehaus.groovy.runtime.dgm$149.invoke(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoMetaMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:271)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:53)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+	at org.codehaus.groovy.grails.plugins.datasource.DataSourceGrailsPlugin$_closure5.doCall(DataSourceGrailsPlugin.groovy:265)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1085)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:909)
+	at groovy.lang.Closure.call(Closure.java:411)
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.callEvent(DefaultGrailsPlugin.java:762)
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnShutdownEventListener(DefaultGrailsPlugin.java:749)
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:735)
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.shutdown(AbstractGrailsPluginManager.java:277)
+	at org.codehaus.groovy.grails.web.context.GrailsContextLoader$1.run(GrailsContextLoader.java:99)
+	at org.codehaus.groovy.grails.lifecycle.ShutdownOperations.runOperations(ShutdownOperations.java:61)
+	at org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet.destroy(GrailsDispatcherServlet.java:241)
+	at org.apache.catalina.core.StandardWrapper.unload(StandardWrapper.java:1482)
+	at org.apache.catalina.core.StandardWrapper.stopInternal(StandardWrapper.java:1843)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5614)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1575)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1564)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
