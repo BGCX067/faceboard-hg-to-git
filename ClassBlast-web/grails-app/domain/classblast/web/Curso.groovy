@@ -1,8 +1,6 @@
 package classblast.web
 
 class Curso {
-	String courseName
-	
 	static hasMany = [
 		careerList:Carrera,
 		facultyList:Facultad,
@@ -10,7 +8,9 @@ class Curso {
 		bookList:Cuaderno,
 		groupList:Grupo
 		]
-	
+	static belongsTo = Carrera
+	Carrera career
+	String courseName
     static constraints = {
     }
 }
