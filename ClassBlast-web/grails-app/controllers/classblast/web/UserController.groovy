@@ -96,7 +96,7 @@ class UserController {
 		validateEmpty(userName, "nombre de usuario")
 		validateEmpty(password, "password")
 		if(userUtils.validateLoginData(userName,password)){
-			if(userUtils.login()){
+			if(userUtils.login(userName,this.session,this.request)){
 				redirect action:"myprofile"
 				return
 			}
@@ -107,12 +107,18 @@ class UserController {
 		redirFromProcess=true
 		redirect action:"login"
 	}
+	
+	def logout(){
+		session.invalidate()
+		redirect controller:"main",action:"index"
+	}
 	def cleanStackTrace(){
 		this.errorValidationList = []
 		this.errorExecList=[]
 	}
 	def myprofile(){
-		redirect url:"/user/home"
+		print ":)"
+		redirect controller:"welcome",action:"index"
 	}
 	def cleanActivity(){
 		visitNumber++

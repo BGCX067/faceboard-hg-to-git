@@ -11,7 +11,6 @@ class UrlMappings {
 		"/user/login/"(controller:"user.login()")
 		"/construction"(view:"/construction")
         "500"(view:'/error')
-		"/user/home"(view:"/user/home")
-		"/user/home"(view:"/user/home")
+		"/user/home"(controller:"welcome")
 	}
 }
