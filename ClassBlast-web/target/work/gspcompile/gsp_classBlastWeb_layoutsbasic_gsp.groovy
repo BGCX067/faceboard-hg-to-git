@@ -30,29 +30,31 @@ invokeTag('captureMeta','sitemesh',13,['gsp_sm_xmlClosingForEmptyTag':(""),'name
 printHtmlPart(2)
 expressionOut.print(resource(dir: 'css', file: 'basic.css'))
 printHtmlPart(3)
-invokeTag('layoutHead','g',16,[:],-1)
+expressionOut.print(resource(dir: 'images', file: 'logo.png'))
+printHtmlPart(4)
+invokeTag('layoutHead','g',17,[:],-1)
 printHtmlPart(1)
-invokeTag('layoutResources','r',17,[:],-1)
+invokeTag('layoutResources','r',18,[:],-1)
 printHtmlPart(1)
 })
-invokeTag('captureHead','sitemesh',18,[:],1)
+invokeTag('captureHead','sitemesh',19,[:],1)
 printHtmlPart(1)
 createTagBody(1, {->
-printHtmlPart(4)
-invokeTag('img','g',21,['height':("40px"),'dir':("images"),'file':("propuesta 3.jpg"),'class':("middle")],-1)
 printHtmlPart(5)
-invokeTag('layoutBody','g',25,[:],-1)
+invokeTag('img','g',22,['height':("40px"),'dir':("images"),'file':("logo.png"),'class':("middle")],-1)
 printHtmlPart(6)
-})
-invokeTag('captureBody','sitemesh',27,[:],1)
+invokeTag('layoutBody','g',26,[:],-1)
 printHtmlPart(7)
+})
+invokeTag('captureBody','sitemesh',28,[:],1)
+printHtmlPart(8)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1383449871852L
+public static final long LAST_MODIFIED = 1384604064000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

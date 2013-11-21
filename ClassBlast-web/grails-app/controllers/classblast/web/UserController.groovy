@@ -117,7 +117,6 @@ class UserController {
 		this.errorExecList=[]
 	}
 	def myprofile(){
-		print ":)"
 		redirect controller:"welcome",action:"index"
 	}
 	def cleanActivity(){

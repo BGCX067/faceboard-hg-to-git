@@ -29,16 +29,16 @@ invokeTag('captureHead','sitemesh',6,[:],1)
 printHtmlPart(1)
 createTagBody(1, {->
 printHtmlPart(3)
-invokeTag('img','g',10,['dir':("images"),'file':("Propuesta 3.jpg"),'class':("middle")],-1)
+invokeTag('img','g',11,['dir':("images"),'file':("classblastLogo.png"),'class':("middle")],-1)
 printHtmlPart(4)
 createClosureForHtmlPart(5, 2)
-invokeTag('link','g',17,['controller':("user"),'action':("login")],2)
+invokeTag('link','g',24,['controller':("user"),'action':("login")],2)
 printHtmlPart(6)
 createClosureForHtmlPart(7, 2)
-invokeTag('link','g',20,['controller':("user"),'action':("register")],2)
+invokeTag('link','g',29,['controller':("user"),'action':("register")],2)
 printHtmlPart(8)
 })
-invokeTag('captureBody','sitemesh',23,[:],1)
+invokeTag('captureBody','sitemesh',33,[:],1)
 printHtmlPart(9)
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -46,7 +46,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1383449871858L
+public static final long LAST_MODIFIED = 1384604490000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'
