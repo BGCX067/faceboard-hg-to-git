@@ -1,33 +1,34 @@
 <!DOCTYPE html>
+<html>
 <head>
 <g:set var="controller" value="${myDomainObjList[0]}" />
 <meta name="layout" content="basic" />
 <title>Bienvenido a ClassBlast</title>
 </head>
 <body>
-	<table width="100%" border="1" height="400px" bordercolor="#ffffff">
+	<table class="index">
 		<tr>
-			<td height="300px" colspan="4"><center>
-					<g:img dir="images" file="classblastLogo.png" class="middle" />
-				</center></td>
+			<td colspan="4" id="main" class="index">
+			<g:img dir="images" file="classblastLogo.png" class="middle" />
+			</td>
 		</tr>
 		<tr>
-			<td width="25%"><center>
-					<b>Explora</b>
-				</center></td>
-			<td width="25%"><center>
-					<b>Acerca</b>
-				</center></td>
-			<td width="25%"><center>
-					<b><g:link controller="user" action="login">
-	Ingresa
-	</g:link>
-				</center> </b></td>
-			<td width="25%"><center>
-					<b><g:link controller="user" action="register">
-	Regístrate
-	</g:link>
-				</center> </b></td>
+			<td id="footer" class="index">
+				<h3>Explora</h3>
+			</td>
+			<td id="footer" class="index">
+				<h3>Acerca</h3>
+			</td>
+			<td id="footer" class="index">
+				<g:link controller="user" action="login">
+				<h3>Ingresa</h3>
+				</g:link>
+			</td>
+			<td id="footer" class="index">
+				<g:link controller="user" action="register">
+				<h3>Regístrate</h3>
+				</g:link>
+			</td>
 		</tr>
 	</table>
 </body>
