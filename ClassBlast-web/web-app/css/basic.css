@@ -5,12 +5,12 @@
 	font-family: arial,sans-serif;
 }
 body{
-	background-color:#088A4B;
-	margin:5px
+	background-color:#9D8AFB;
+	margin:5px;
 }
 a{
 	text-decoration: none;
-	color:#A9BCF5
+	color:#8AFBFA;
 }
 input{
 	border-width:0px;
@@ -27,7 +27,7 @@ div.main-container{
 	background-color:#5882FA;
 	min-height:400px;
 	margin:10px 20px;
-	padding:20px;
+    padding:20px;
 }
 form.registerForm,
 form.loginForm,
