@@ -9,7 +9,6 @@ class Curso {
 		groupList:Grupo
 		]
 	static belongsTo = Carrera
-	Carrera career
 	String courseName
     static constraints = {
     }

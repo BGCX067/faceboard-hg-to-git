@@ -2,7 +2,7 @@
 <html>
 <head>
 <g:set var="controller" value="${myDomainObjList[0]}" />
-<meta name="layout" content="basic" />
+<meta name="layout" content="${controller.templateToRender}" />
 <title>Bienvenido a ClassBlast</title>
 </head>
 <body>

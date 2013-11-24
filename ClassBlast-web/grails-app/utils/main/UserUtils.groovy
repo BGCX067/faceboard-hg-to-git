@@ -5,6 +5,9 @@ import javax.servlet.http.HttpSession
 import org.springframework.http.HttpRequest
 
 class UserUtils {
+	
+	def targetUser
+	
 	def userNameExists(userName){
 		User.findAllByLogin(userName)!=[]
 	}
@@ -32,17 +35,26 @@ class UserUtils {
 	def validateLoginData(userName,password){
 		def securityUtils = new SecurityUtils()
 		def encryptedPassword = securityUtils.hashWithMd5(password)
-		User.findAllByLoginAndEncryptedPassword(userName,encryptedPassword)!=[]
+		def userMatchingList = User.findAllByLoginAndEncryptedPassword(userName,encryptedPassword)
+		if(userMatchingList!=[]){
+			this.targetUser = userMatchingList[0]
+			return true
+		}
+		return false
 	}
 
-	def login(userName,session, request){
+	def login(session){
 		try{
-			session["user"] = userName
+			session["user"] = this.targetUser
 		}
 		catch(Exception e){
 			print e
 			return false
 		}
 		return true
+	}
+	
+	static loadGroupListOfUser(User user){
+		return user.groupList
 	}
 }

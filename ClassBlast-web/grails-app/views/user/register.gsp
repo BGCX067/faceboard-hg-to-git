@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <g:set var="controller" value="${myDomainObjList[0]}" />
-<meta name="layout" content="basic" />
+<meta name="layout" content="nologged" />
 <title>Bienvenido a ClassBlast - Registro</title>
 </head>
 <body>

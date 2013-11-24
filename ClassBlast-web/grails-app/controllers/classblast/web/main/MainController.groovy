@@ -5,6 +5,10 @@ import main.MainUtils
 
 class MainController {
 
-    def index() {[myDomainObjList:this.findAll()] }
+	def templateToRender=""
+	
+    def index() {
+		this.templateToRender= session["user"]==null?"nologged":"logged"
+		[myDomainObjList:this.findAll()] }
 	
 }

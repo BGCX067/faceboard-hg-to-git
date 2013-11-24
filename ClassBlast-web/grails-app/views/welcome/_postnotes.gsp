@@ -1,0 +1,1 @@
+<g:message message="${intento}"></g:message>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<meta name="layout" content="basic" />
+<meta name="layout" content="default" />
 <title>Bienvenido a ClassBlast - página en construcción</title>
 </head>
 <body>

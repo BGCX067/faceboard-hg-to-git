@@ -10,8 +10,10 @@ class Parche {
 	CommunityType communityType
 	static hasMany = [
 		communityRolList:Rol,
-		postList:Publicacion
+		postList:Publicacion,
+		userList:User
 		]
+	static belongsTo = User
     static constraints = {
     }
 }

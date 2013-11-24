@@ -1,8 +1,10 @@
 package classblast.web
 
+import main.GeneralUtils;
 import main.UserUtils
 import main.ValidationUtils
 
+@Mixin(GeneralUtils)
 class UserController {
 	def errorValidationList = []
 	def errorExecList = []
@@ -15,6 +17,9 @@ class UserController {
 	def validationUtils = new ValidationUtils()
 
 	def register(){
+		if(session["user"]!=null){
+			redirect(controller:"welcome")
+		}
 		if (registerSuccessFul){
 			cleanActivity()
 		}
@@ -96,7 +101,7 @@ class UserController {
 		validateEmpty(userName, "nombre de usuario")
 		validateEmpty(password, "password")
 		if(userUtils.validateLoginData(userName,password)){
-			if(userUtils.login(userName,this.session,this.request)){
+			if(userUtils.login(this.session)){
 				redirect action:"myprofile"
 				return
 			}
@@ -139,6 +144,9 @@ class UserController {
 	}
 
 	def login(){
+		if(session["user"]!=null){
+			redirect(controller:"welcome")
+		}
 		if(redirFromProcess){
 			redirFromProcess = false
 		}

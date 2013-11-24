@@ -12,5 +12,14 @@ class UrlMappings {
 		"/construction"(view:"/construction")
         "500"(view:'/error')
 		"/user/home"(controller:"welcome")
+		"/user/books/"(controller:"book")
+		"/user/books/note"(controller:"note")
+		"/user/books/setup"(controller:"book",action:"setup")
+		"/user/books/create"(controller:"book",action:"create")
+		"/user/homeworks/"(controller:"homework")
+		"/user/homeworks/edit"(controller:"homework",action:"edit")
+		"/user/homeworks/create"(controller:"homework",action:"create")
+		"/user/profile"(controller:"profile")
+		"/modules/_mainmenu"(controller:"mainmenu")
 	}
 }

@@ -8,6 +8,10 @@ body{
 	background-color:#9D8AFB;
 	margin:5px;
 }
+li{
+	text-decoration:none;
+	list-style: none;
+}
 a{
 	text-decoration: none;
 	color:#8AFBFA;
@@ -27,7 +31,6 @@ div.main-container{
 	background-color:#5882FA;
 	min-height:400px;
 	margin:10px 20px;
-    padding:20px;
 }
 form.registerForm,
 form.loginForm,
@@ -92,4 +95,38 @@ p.ui-error-validation{
 }
 .ui-color-standard{
 	color:#F8E0E0;
+}
+
+header{
+	height:50px;
+}
+header section{
+	height:100%;
+}
+.columnmode{
+	display:inline-block;
+}
+.sec-logo{
+	margin-left:25px;
+	width:400px;
+}
+.sec-user-info{
+	width:500px;
+}
+.sec-search{
+
+}
+
+.sec-search input{
+	height:30px;
+	width:300px;
+	border-radius:3px;
+	padding-left:5px;
+	color:gray;
+	font-size:1.2em;
+}
+
+.sec-search img{
+	width:24px;
+	height:24px;
 }

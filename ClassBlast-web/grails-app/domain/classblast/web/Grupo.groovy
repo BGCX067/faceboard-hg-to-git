@@ -15,8 +15,10 @@ class Grupo {
 		fileList:Archivo,
 		homeworkList:Tarea,
 		meetingList:Mesaredonda,
-		postList:Publicacion
+		postList:Publicacion,
+		userList:User
 		]
+	static belongsTo = User
     static constraints = {
     }
 }

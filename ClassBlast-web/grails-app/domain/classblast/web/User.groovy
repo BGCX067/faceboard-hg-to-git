@@ -23,4 +23,20 @@ class User {
 		conversation2List:'user2Related']
     static constraints = {
     }
+	def loadGroupList(user){
+		def studs = Grupo.withCriteria {
+			userList {
+			  eq('id', user.id)
+			}
+		  }
+		return studs
+	}
+	def loadCommunityList(user){
+		def studs = Parche.withCriteria {
+			userList {
+			  eq('id', user.id)
+			}
+		  }
+		return studs
+	}
 }

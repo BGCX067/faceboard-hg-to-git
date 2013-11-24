@@ -15,7 +15,6 @@
 	type="text/css">
 <link rel="shortcut icon" href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
 <g:layoutHead />
-<r:layoutResources />
 <style>
 h3	{
 	text-align: center 
@@ -51,10 +50,35 @@ td.index{
 </style>
 </head>
 <body>
-	<p style="font-size: 2.2em; color: #000000">
-	<g:img height="40px" dir="images" file="logo.png" class="middle" />
-	Classblast
-	</p>
+	<header>
+		<section class="sec-logo columnmode">
+			<g:link controller="main">
+				<p style="font-size:2.2em;margin-top:5px">
+				<g:img height="40px" dir="images" file="logo.png" class="middle" />
+				Classblast</p>
+			</g:link>
+			
+		</section>
+		<section class="sec-user-info columnmode">
+			<g:pageProperty name="page.userinfocontent"/>
+		</section>
+		<section class="sec-search columnmode">
+			<g:form controller="contentsearch" 
+					action="searchprocess"
+					name="formcontentsearch"
+					method="post">
+				<g:textField name="course_search" 
+							 onfocus="if(this.value == 'Buscar cursos') {this.value=''}" 
+							 onblur="if(this.value == ''){this.value ='Buscar cursos'}" 
+							 value="Buscar cursos"/>
+				<g:link url="#"
+						onclick="document.formcontentsearch.submit()">
+					<g:img dir="images/icons" class="middle" file="search-24.ico"/>
+				</g:link>
+			</g:form>
+		</section>
+	</header>
+	
 	<div class="main-container">
 	<g:layoutBody />
 	</div>

@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="basic" />
+<meta name="layout" content="logged" />
 <title>Bienvenido a ClassBlast - Inicio</title>
 </head>
 <body>
+	<g:render template="/modules/mainmenu" model="${[groupList:groupList,communityList:communityList]}"/>
 	<table class="index">
-		<tr>
-			<td colspan="3" id="head" class="index">
-			</td>
-			<td class="index">
-				<g:link controller="user" action="logout">
-				<!--<g:img height="50px" dir="images" file="logout.jpg" class="middle" />-->
-				<h3>Cerrar Sesión</h3>
-				</g:link>
-			</td> 
-		</tr>
 		<tr>
 			<td colspan="2" id="main" class="index">
 			<h3>Hoy</h3>
