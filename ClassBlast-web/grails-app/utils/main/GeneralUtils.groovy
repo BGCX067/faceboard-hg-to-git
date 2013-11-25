@@ -2,7 +2,6 @@ package main
 
 import classblast.web.User;
 
-@Category(Object)
 class GeneralUtils {
 	
 	def prueba(){
