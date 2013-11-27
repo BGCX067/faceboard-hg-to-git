@@ -15,8 +15,6 @@
 	</td>
 	</tr>
 	</table>
-	
-	
 	<table width="100%" border="1" height="400px" bordercolor="#ffffff">
   <tr>
     <td height="400px" width="33%"><center><b>Actividad Reciente</b></center></td>

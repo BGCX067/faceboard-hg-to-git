@@ -5,8 +5,7 @@
 	font-family: arial,sans-serif;
 }
 body{
-	background-color:#9D8AFB;
-	margin:5px;
+	background-color:#ffffff;
 }
 li{
 	text-decoration:none;
@@ -14,7 +13,7 @@ li{
 }
 a{
 	text-decoration: none;
-	color:#8AFBFA;
+	color:#00A3C1;
 }
 input{
 	border-width:0px;
@@ -28,9 +27,8 @@ img.bottom {vertical-align:text-bottom;}
 img.middle {vertical-align:middle;}
 
 div.main-container{
-	background-color:#5882FA;
+	background-color:#ffffff;
 	min-height:400px;
-	margin:10px 20px;
 }
 form.registerForm,
 form.loginForm,

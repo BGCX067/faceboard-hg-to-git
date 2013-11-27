@@ -19,66 +19,82 @@
 h3	{
 	text-align: center 
   }
-
-table.index {
-	width: 100%;
-	border-spacing:0;
-    border-collapse:collapse;
+h3:hover{
+	background-color: #8BC600;
 }
-td.index{
-	border: 1px;
-	border-bottom:solid #AEEDED;
-	padding: 1.5% 1.5%;
-}
-
-.index td:hover{
-  	background-color: #8BC600;
-}
-
-#head{
-	background-color:#5882FA;
-	width: 75%;
+#container{
 }
 #main{
-	background-color:#ffffff;
-	width: 50%;
-	height: 400px;
+	width:99.5%;
+	height:400px;
+	border: 1px;
+	border:solid #8BC600;
 }
-#footer {
-	width: 25%;
+#menu{
+	width:24%;
+	float: left;
+	padding: 0.5% 0.5%;
+	border: 0.5px;
+	border-bottom:solid #8BC600;
+}
+#header{
+	width: 100%;
+	height: 40px;
+	background-color:#0AA3C1;
+}
+#logo {
+	float:left;
+	width:40%
+}
+#logo p{
+	font-size:1.7em;
+	margin-top:2px;
+	color: #ffffff;
+}
+#loginTools{
+	color:#ffffff;
+	width:29%;
+	float:left;
+	padding:5px;
+}
+#search{
+	width: 29%;
+	float:left;
+	padding:5px;	
+}
+#search input{
+	border-radius:3px;
+	padding-left:5px;
+	color:gray;
+	font-size:1.2em;
 }
 </style>
 </head>
 <body>
-	<header>
-		<section class="sec-logo columnmode">
+	<div id="header">
+		<div id="logo">
 			<g:link controller="main">
-				<p style="font-size:2.2em;margin-top:5px">
-				<g:img height="40px" dir="images" file="logo.png" class="middle" />
-				Classblast</p>
-			</g:link>
-			
-		</section>
-		<section class="sec-user-info columnmode">
+			<p id="logo">
+			<g:img height="20px" dir="images" file="logo.png" class="middle" />
+			Classblast
+			</p>
+			</g:link>		
+		</div>
+		<div id="loginTools">
 			<g:pageProperty name="page.userinfocontent"/>
-		</section>
-		<section class="sec-search columnmode">
-			<g:form controller="contentsearch" 
-					action="searchprocess"
-					name="formcontentsearch"
-					method="post">
-				<g:textField name="course_search" 
+		</div>
+		<div id="search">
+			<g:form controller="contentsearch" action="searchprocess" name="formcontentsearch" method="post">
+			<g:textField name="course_search" 
 							 onfocus="if(this.value == 'Buscar cursos') {this.value=''}" 
 							 onblur="if(this.value == ''){this.value ='Buscar cursos'}" 
 							 value="Buscar cursos"/>
-				<g:link url="#"
-						onclick="document.formcontentsearch.submit()">
-					<g:img dir="images/icons" class="middle" file="search-24.ico"/>
-				</g:link>
+			<g:link url="#" onclick="document.formcontentsearch.submit()">
+			<g:img height="20px" dir="images/icons" class="middle" file="search-24.ico"/>
+			</g:link>
 			</g:form>
-		</section>
-	</header>
-	
+		</div>
+	</div>
 	<div class="main-container">
 	<g:layoutBody />
 	</div>

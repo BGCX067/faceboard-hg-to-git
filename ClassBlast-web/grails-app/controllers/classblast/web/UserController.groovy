@@ -16,6 +16,9 @@ class UserController {
 	def userUtils = new UserUtils()
 	def validationUtils = new ValidationUtils()
 
+	def about(){
+		redirect url:"/about/about"
+	}
 	def register(){
 		if(session["user"]!=null){
 			redirect(controller:"welcome")

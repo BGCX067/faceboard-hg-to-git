@@ -9,7 +9,8 @@
 		<content tag="userinfocontent"> 
 			<g:link >
 			${session["user"].login }
-			</g:link>&nbsp;&nbsp;&nbsp;
+			</g:link>
+			&nbsp;&nbsp;&nbsp;
 			<g:link >
 			<g:img class="middle" dir="images/icons" file="notification-24.ico"></g:img>
 			</g:link>

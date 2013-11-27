@@ -22,5 +22,6 @@ class UrlMappings {
 		"/user/profile"(controller:"profile")
 		"/user/alerts"(controller:"alert")
 		"/modules/_mainmenu"(controller:"mainmenu")
+		"/about/about"(view:'/about/about')
 	}
 }
