@@ -19,6 +19,7 @@ class UrlMappings {
 		"/user/homeworks/"(controller:"homework")
 		"/user/homeworks/edit"(controller:"homework",action:"edit")
 		"/user/homeworks/create"(controller:"homework",action:"create")
+		"/group/create"(controller:"group",action:"create")
 		"/user/profile"(controller:"profile")
 		"/user/alerts"(controller:"alert")
 		"/modules/_mainmenu"(controller:"mainmenu")

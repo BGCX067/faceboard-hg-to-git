@@ -43,22 +43,26 @@ form.registerForm label
 	vertical-align:middle;
 	width:300px;
 	font-size:1.2em;
-	color:#E0E6F8;
+	color:#0B173B;
 	text-align:right
 }
 form.registerForm input,
-form.registerSuccesfulForm input{
+form.registerSuccesfulForm input,
+form.registerForm textarea,
+form.registerSuccesfulForm textarea{
 	width:300px;
 	font-size:1.2em;
 	border-radius:3px;
-	background-color:#E0E6F8
+	border-width:1px; 
+	resize:none;
 }
-form.registerSuccesfulForm input{
+form.registerSuccesfulForm input,
+form.registerSuccesfulForm textarea{
 	display:inline-block;
 	margin-left:160px;
 }
 form.registerSuccesfulForm p{
-	color:#E0E6F8;
+	color:#0B173B;
 }
 form.loginForm label
 {
@@ -66,7 +70,7 @@ form.loginForm label
 	vertical-align:middle;
 	width:180px;
 	font-size:1.2em;
-	color:#E0E6F8;
+	color:#0B173B;
 	text-align:right
 }
 form.loginForm a{
@@ -74,17 +78,21 @@ form.loginForm a{
 	vertical-align:middle;
 	width:180px;
 	font-size:0.8em;
-	color:#E0E6F8;
+	color:#0B173B;
 }
-form.loginForm input{
+form.loginForm input,
+form.loginForm textarea{
 	width:200px;
 	font-size:1.2em;
 	border-radius:3px;
+	border-width:1px; 
+	resize:none;
 }
 form.loginForm span,
 form.registerForm span{
 	font-size:1.5em;
-	color:#E0E6F8
+	color:#0B173B
+	/*anterior: #E0E6F8*/
 }
 p.ui-error-validation{
 	background-color:#FE2E2E;

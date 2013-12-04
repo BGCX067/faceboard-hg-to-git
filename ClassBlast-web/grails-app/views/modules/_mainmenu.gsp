@@ -5,31 +5,37 @@
 	<br/><br/>
 	<ul class="list-menu">
 		<li><g:link>Cursos</g:link>
-			<g:if test="${groupList!=[]}">
-				<ul>
+			<ul>
+				<g:if test="${true}">
+					<li><g:link controller="group" action="create">Crear nuevo grupo</g:link></li>
+				</g:if>
+				<g:if test="${groupList!=[]}">
 					<g:each in="${groupList}" var="groupItem">
 						<li><g:link controller="group">${groupItem.groupName}</g:link></li>
 					</g:each>
-				</ul>
-			</g:if>
-			<g:else>
-				<ul><li><g:message message="No está en ningún curso"/></li></ul>
-			</g:else>
+				</g:if>
+				<g:else>
+					<li><g:message message="No está en ningún curso"/></li>
+				</g:else>
+			</ul>
 		</li>
 		<li><g:link>Notificaciones</g:link></li>
 		<li><g:link>Perfil</g:link></li>
 		<li><g:link>Publicaciones</g:link></li>
 		<li><g:link>Parches</g:link>
-			<g:if test="${communityList!=[]}">
-				<ul>
+			<ul>
+				<g:if test="${true}">
+					<li><g:link controller="community" action="create">Crear nuevo parche</g:link></li>
+				</g:if>
+				<g:if test="${communityList!=[]}">
 					<g:each in="${groupList}" var="communityItem">
 						<li><g:link controller="community">${communityItem.communityName}</g:link></li>
 					</g:each>
-				</ul>
-			</g:if>
-			<g:else>
-				<ul><li><g:message message="No está en ningún parche"/></li></ul>
-			</g:else>
+				</g:if>
+				<g:else>
+					<li><g:message message="No está en ningún parche"/></li>
+				</g:else>
+			</ul>
 		</li>
 		<li><g:link>Comentarios</g:link></li>
 		<li><g:link>Tareas</g:link></li>

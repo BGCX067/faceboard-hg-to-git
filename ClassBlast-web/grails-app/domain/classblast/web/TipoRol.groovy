@@ -1,8 +1,8 @@
 package classblast.web
 
 class TipoRol {
-	enum RolType {GENERIC,GROUP}
-	RolType rolType
+	String rolType
+	String rolDescription
 	static hasMany = [privilegeList : Privilegio, rolList: Rol]
     static constraints = {
     }

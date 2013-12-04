@@ -3,11 +3,10 @@ package classblast.web
 import java.util.Date;
 
 class Grupo {
-	enum GroupState{TO_START,ONGOING,FINISHED}
 	String groupName
 	String groupDescription
 	Curso courseRelated
-	GroupState groupState
+	String groupState
 	Date creationDate
 	Seccion courseSection
 	static hasMany = [
@@ -21,4 +20,25 @@ class Grupo {
 	static belongsTo = User
     static constraints = {
     }
+	def groupState(option){
+		switch(option){
+			case "TO_START":
+				return "Por empezar"
+			case "ONGOING":
+				return "En curso"
+			case "FINISHED":
+				return "Finalizado"
+			default:
+				return ""
+		}
+	}
+	
+	def loadUserList(grupo){
+		def studs = User.withCriteria {
+			groupList {
+			  eq('id', grupo.id)
+			}
+		  }
+		return studs
+	}
 }

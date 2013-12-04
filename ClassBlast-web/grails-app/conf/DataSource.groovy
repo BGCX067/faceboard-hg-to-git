@@ -16,7 +16,7 @@ hibernate {
 environments {
     development {
         dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
 			password = "12345"
@@ -24,7 +24,7 @@ environments {
     }
     test {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
             password = "12345"
@@ -32,7 +32,7 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
             password = "12345"
