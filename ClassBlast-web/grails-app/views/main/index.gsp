@@ -11,7 +11,7 @@
 			<h3>Explora</h3>
 		</div>
 		<div id="menu">
-			<g:link controller="user" action="about">
+			<g:link controller="about" action="about">
 			<h3>Acerca</h3>	
 			</g:link>	
 		</div>

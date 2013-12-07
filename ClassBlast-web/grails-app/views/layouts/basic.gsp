@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'basic.css')}"
 	type="text/css">
 <link rel="shortcut icon" href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
+<script type="javascript" src="${resource(dir: 'js',file: "application.js") }"></script>
 <g:layoutHead />
 <title><g:layoutTitle default="Grails"/></title>
 <style>
