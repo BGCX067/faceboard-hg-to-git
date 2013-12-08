@@ -27,9 +27,8 @@
 			<g:textArea name="post_body"/>
 			<g:actionSubmit value="Crear" />
 		</g:formRemote>
-		<div id="post_list">
-			<g:render template="/modules/postlistmodule" model="['grupo':grupo]"/>
-		</div>
+		<g:render template="/modules/postlistmodule" 
+			model="['grupo':grupo]"/>
 	</g:else>
 	
 </body>

@@ -18,6 +18,7 @@ class GroupController {
 	def grupo
 	def isAdmin
 	def groupId
+	def hiddenDeletedPostList = []
 
 	def index() {
 		groupId = params.groupid
@@ -86,9 +87,10 @@ class GroupController {
 	}
 	
 	def deletePost(){
-		def publicacion = Publicacion.get(params.postid)
-		publicacion.delete()
-		grupo.removeFromPostList(publicacion).save()
-		render (template:"/modules/postlistmodule",model:['grupo':grupo])
+		print "preparando..."
+		def publicacion = Publicacion.get(params.id)
+		grupo.removeFromPostList(publicacion)
+		render ([grupo.postList] - [publicacion])
+		//render (template:"/modules/postlistmodule",model:['grupo':Grupo.get(groupId)])
 	}
 }
