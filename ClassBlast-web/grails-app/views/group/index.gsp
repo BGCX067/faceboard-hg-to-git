@@ -5,6 +5,7 @@
 <title>Grupo - Classblast</title>
 </head>
 <body>
+	<g:render template="/modules/scripting"/>
 	<g:if test="${groupNotFound}">
 		Lo siento pero el grupo que buscas no existe :p
 	</g:if>
@@ -17,15 +18,19 @@
 			<g:link action="userspanel">Administrar usuarios</g:link>
 		</g:if>
 		
-			<label for="post-value">Escribe una publicación</label>
-			<g:textArea name="post_value"/>
-			<g:actionSubmit value="Crear" onclick="miFuncion('post_value')"/>
-		
-		<g:each in="${grupo.postList}" var="postitem">
-			r
-		</g:each>
+		<p>Escribe una publicación</p>
+		<g:formRemote name="mf" on404="alert('not found!)" 
+		update="post_list" url="[controller:'group',action:'createPost']">
+			<label for="post_title">Título</label>
+			<input type="text" name="post_title"/><br/><br/>
+			<label for="post_body">Mensaje</label>
+			<g:textArea name="post_body"/>
+			<g:actionSubmit value="Crear" />
+		</g:formRemote>
+		<div id="post_list">
+			<g:render template="/modules/postlistmodule" model="['grupo':grupo]"/>
+		</div>
 	</g:else>
-	
 	
 </body>
 </html>

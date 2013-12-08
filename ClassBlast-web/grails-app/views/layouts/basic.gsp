@@ -12,62 +12,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'basic.css')}"
 	type="text/css">
-<link rel="shortcut icon" href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
-<script type="javascript" src="${resource(dir: 'js',file: "application.js") }"></script>
+<link rel="shortcut icon"
+	href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
 <g:layoutHead />
-<title><g:layoutTitle default="Grails"/></title>
+<title><g:layoutTitle default="Grails" /></title>
+<script type="text/javascript" src="${resource(dir:'js', file:'application.js')}"></script>
+<script type="text/javascript" src="${resource(dir:'js', file:'jquery-1.9.0.min.js')}"></script>
 <style>
-h3	{
-	text-align: center 
-  }
-h3:hover{
+h3 {
+	text-align: center
+}
+
+h3:hover {
 	background-color: #8BC600;
 }
-#container{
+
+#container {
+	
 }
-#main{
-	width:99.5%;
-	height:400px;
+
+#main {
+	width: 99.5%;
+	height: 400px;
 	border: 1px;
-	border:solid #8BC600;
+	border: solid #8BC600;
 }
-#menu{
-	width:24%;
+
+#menu {
+	width: 24%;
 	float: left;
 	padding: 0.5% 0.5%;
 	border: 0.5px;
-	border-bottom:solid #8BC600;
+	border-bottom: solid #8BC600;
 }
-#header{
+
+#header {
 	width: 100%;
 	height: 40px;
-	background-color:#0AA3C1;
+	background-color: #0AA3C1;
 }
+
 #logo {
-	float:left;
-	width:40%
+	float: left;
+	width: 40%
 }
-#logo p{
-	font-size:1.7em;
-	margin-top:2px;
+
+#logo p {
+	font-size: 1.7em;
+	margin-top: 2px;
 	color: #ffffff;
 }
-#loginTools{
-	color:#ffffff;
-	width:29%;
-	float:left;
-	padding:5px;
-}
-#search{
+
+#loginTools {
+	color: #ffffff;
 	width: 29%;
-	float:left;
-	padding:5px;	
+	float: left;
+	padding: 5px;
 }
-#search input{
-	border-radius:3px;
-	padding-left:5px;
-	color:gray;
-	font-size:1.2em;
+
+#search {
+	width: 29%;
+	float: left;
+	padding: 5px;
+}
+
+#search input {
+	border-radius: 3px;
+	padding-left: 5px;
+	color: gray;
+	font-size: 1.2em;
 }
 </style>
 </head>
@@ -75,29 +88,31 @@ h3:hover{
 	<div id="header">
 		<div id="logo">
 			<g:link controller="main">
-			<p id="logo">
-			<g:img height="20px" dir="images" file="logo.png" class="middle" />
-			Classblast
-			</p>
-			</g:link>		
+				<p id="logo">
+					<g:img height="20px" dir="images" file="logo.png" class="middle" />
+					Classblast
+				</p>
+			</g:link>
 		</div>
 		<div id="loginTools">
-			<g:pageProperty name="page.userinfocontent"/>
+			<g:pageProperty name="page.userinfocontent" />
 		</div>
 		<div id="search">
-			<g:form controller="contentsearch" action="searchprocess" name="formcontentsearch" method="post">
-			<g:textField name="course_search" 
-							 onfocus="if(this.value == 'Buscar cursos') {this.value=''}" 
-							 onblur="if(this.value == ''){this.value ='Buscar cursos'}" 
-							 value="Buscar cursos"/>
-			<g:link url="#" onclick="document.formcontentsearch.submit()">
-			<g:img height="20px" dir="images/icons" class="middle" file="search-24.ico"/>
-			</g:link>
+			<g:form controller="contentsearch" action="searchprocess"
+				name="formcontentsearch" method="post">
+				<g:textField name="course_search"
+					onfocus="if(this.value == 'Buscar cursos') {this.value=''}"
+					onblur="if(this.value == ''){this.value ='Buscar cursos'}"
+					value="Buscar cursos" />
+				<g:link url="#" onclick="document.formcontentsearch.submit()">
+					<g:img height="20px" dir="images/icons" class="middle"
+						file="search-24.ico" />
+				</g:link>
 			</g:form>
 		</div>
 	</div>
 	<div class="main-container">
-	<g:layoutBody />
+		<g:layoutBody />
 	</div>
 </body>
 </html>
