@@ -10,5 +10,7 @@ class Publicacion {
 	Grupo groupRelated
 	static hasMany = [commentList : Comentario]
     static constraints = {
+		communityRelated nullable:true
+		groupRelated nullable:true
     }
 }

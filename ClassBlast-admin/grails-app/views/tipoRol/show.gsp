@@ -34,6 +34,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${tipoRolInstance?.rolDescription}">
+				<li class="fieldcontain">
+					<span id="rolDescription-label" class="property-label"><g:message code="tipoRol.rolDescription.label" default="Rol Description" /></span>
+					
+						<span class="property-value" aria-labelledby="rolDescription-label"><g:fieldValue bean="${tipoRolInstance}" field="rolDescription"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${tipoRolInstance?.rolList}">
 				<li class="fieldcontain">
 					<span id="rolList-label" class="property-label"><g:message code="tipoRol.rolList.label" default="Rol List" /></span>

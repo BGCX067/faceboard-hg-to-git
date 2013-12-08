@@ -3,13 +3,10 @@ package classblast.admin
 import java.util.Date;
 
 class Grupo {
-	enum GroupState{
-		TO_START,ONGOING,FINISHED
-	}
 	String groupName
 	String groupDescription
 	Curso courseRelated
-	GroupState groupState
+	String groupState
 	Date creationDate
 	Seccion courseSection
 	static hasMany = [
@@ -19,7 +16,7 @@ class Grupo {
 		meetingList:Mesaredonda,
 		postList:Publicacion,
 		userList:User
-	]
+		]
 	static belongsTo = User
 	static constraints = {
 	}

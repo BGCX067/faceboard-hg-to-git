@@ -10,6 +10,14 @@
 	<g:select name="privilegeList" from="${classblast.admin.Privilegio.list()}" multiple="multiple" optionKey="id" size="5" value="${tipoRolInstance?.privilegeList*.id}" class="many-to-many"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: tipoRolInstance, field: 'rolDescription', 'error')} ">
+	<label for="rolDescription">
+		<g:message code="tipoRol.rolDescription.label" default="Rol Description" />
+		
+	</label>
+	<g:textField name="rolDescription" value="${tipoRolInstance?.rolDescription}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: tipoRolInstance, field: 'rolList', 'error')} ">
 	<label for="rolList">
 		<g:message code="tipoRol.rolList.label" default="Rol List" />
@@ -27,11 +35,11 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: tipoRolInstance, field: 'rolType', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: tipoRolInstance, field: 'rolType', 'error')} ">
 	<label for="rolType">
 		<g:message code="tipoRol.rolType.label" default="Rol Type" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select name="rolType" from="${classblast.admin.TipoRol$RolType?.values()}" keys="${classblast.admin.TipoRol$RolType.values()*.name()}" required="" value="${tipoRolInstance?.rolType?.name()}"/>
+	<g:textField name="rolType" value="${tipoRolInstance?.rolType}"/>
 </div>
 

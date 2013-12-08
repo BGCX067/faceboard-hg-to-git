@@ -76,12 +76,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: grupoInstance, field: 'groupState', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: grupoInstance, field: 'groupState', 'error')} ">
 	<label for="groupState">
 		<g:message code="grupo.groupState.label" default="Group State" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select name="groupState" from="${classblast.admin.Grupo$GroupState?.values()}" keys="${classblast.admin.Grupo$GroupState.values()*.name()}" required="" value="${grupoInstance?.groupState?.name()}"/>
+	<g:textField name="groupState" value="${grupoInstance?.groupState}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: grupoInstance, field: 'homeworkList', 'error')} ">

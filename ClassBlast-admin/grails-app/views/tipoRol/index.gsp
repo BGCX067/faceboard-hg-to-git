@@ -24,6 +24,8 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="rolDescription" title="${message(code: 'tipoRol.rolDescription.label', default: 'Rol Description')}" />
+					
 						<g:sortableColumn property="rolType" title="${message(code: 'tipoRol.rolType.label', default: 'Rol Type')}" />
 					
 					</tr>
@@ -32,7 +34,9 @@
 				<g:each in="${tipoRolInstanceList}" status="i" var="tipoRolInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${tipoRolInstance.id}">${fieldValue(bean: tipoRolInstance, field: "rolType")}</g:link></td>
+						<td><g:link action="show" id="${tipoRolInstance.id}">${fieldValue(bean: tipoRolInstance, field: "rolDescription")}</g:link></td>
+					
+						<td>${fieldValue(bean: tipoRolInstance, field: "rolType")}</td>
 					
 					</tr>
 				</g:each>
