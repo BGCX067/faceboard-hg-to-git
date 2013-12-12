@@ -1,13 +1,14 @@
 package main
 
+import classblast.web.Rol
 import classblast.web.User
 import javax.servlet.http.HttpSession
 import org.springframework.http.HttpRequest
 
 class UserUtils {
-	
+
 	def targetUser
-	
+
 	def userNameExists(userName){
 		User.findAllByLogin(userName)!=[]
 	}
@@ -53,8 +54,33 @@ class UserUtils {
 		}
 		return true
 	}
-	
+
 	static loadGroupListOfUser(User user){
 		return user.groupList
+	}
+
+	def getGenericRolOfUser(User usr){
+		User user = User.get(usr.id)
+		def rolList = user.rolList
+		def rolToReturn = null
+		rolList.each{Rol it->
+			if(it.rolType.rolType=="Estudiante" || it.rolType.rolType=="Docente"){
+				rolToReturn = it
+			}
+		}
+		return rolToReturn
+	}
+
+	def returnMatchByProfileSearch(search){
+		def userList = User.getAll()
+		def userListToReturn = []
+		userList.each {
+			if(search==it.firstName || search==it.lastName
+			|| search==it.firstName+" "+it.lastName
+			|| search==it.email){
+				userListToReturn += it
+			}
+		}
+		return userListToReturn
 	}
 }

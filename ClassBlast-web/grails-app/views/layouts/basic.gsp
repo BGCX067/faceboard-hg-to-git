@@ -85,6 +85,7 @@ h3:hover {
 </style>
 </head>
 <body>
+	<g:render template="/modules/scripting"/>
 	<div id="header">
 		<div id="logo">
 			<g:link controller="main">

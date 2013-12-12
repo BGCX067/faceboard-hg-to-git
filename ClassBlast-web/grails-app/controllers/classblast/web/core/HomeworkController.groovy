@@ -3,7 +3,10 @@ package classblast.web.core
 class HomeworkController {
 
 	def index() {
-		render(view:"/user/homeworks/homeworks-index")
+		if(true){
+			render(view:"/group/homeworks")
+		}
+		//render(view:"/user/homeworks/homeworks-index")
 	}
 	
 	def edit() {

@@ -11,7 +11,8 @@
 				</g:if>
 				<g:if test="${groupList!=[]}">
 					<g:each in="${groupList}" var="groupItem">
-						<li><g:link controller="group">${groupItem.groupName}</g:link></li>
+						<li><g:link controller="group" 
+						params="[groupid:groupItem.id]">${groupItem.groupName}</g:link></li>
 					</g:each>
 				</g:if>
 				<g:else>
@@ -19,9 +20,9 @@
 				</g:else>
 			</ul>
 		</li>
-		<li><g:link>Notificaciones</g:link></li>
-		<li><g:link>Perfil</g:link></li>
-		<li><g:link>Publicaciones</g:link></li>
+		<li><g:link controller="alert">Notificaciones</g:link></li>
+		<li><g:link controller="profile">Perfil</g:link></li>
+		<li><g:link controller="post">Publicaciones</g:link></li>
 		<li><g:link>Parches</g:link>
 			<ul>
 				<g:if test="${true}">

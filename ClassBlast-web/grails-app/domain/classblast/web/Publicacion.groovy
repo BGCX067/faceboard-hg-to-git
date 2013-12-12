@@ -11,4 +11,7 @@ class Publicacion {
 		communityRelated nullable:true
 		groupRelated nullable:true
     }
+	static mapping = {
+		commentList(sort:'commentDate', order:'asc')
+	}
 }

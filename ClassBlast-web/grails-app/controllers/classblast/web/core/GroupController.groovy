@@ -1,5 +1,6 @@
 package classblast.web.core
 
+import classblast.web.Comentario
 import classblast.web.Curso
 import classblast.web.Publicacion
 import classblast.web.Rol
@@ -7,8 +8,8 @@ import classblast.web.TipoRol
 import classblast.web.User
 import classblast.web.Grupo
 import classblast.web.Seccion
-class GroupController {
 
+class GroupController {
 	def courseList
 	def errorList = []
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST", list: "GET"]
@@ -18,7 +19,6 @@ class GroupController {
 	def grupo
 	def isAdmin
 	def groupId
-	def hiddenDeletedPostList = []
 
 	def index() {
 		groupId = params.groupid
@@ -37,6 +37,13 @@ class GroupController {
 		courseList = Curso.findAll()
 		render(view:"/group/create")
 	}
+	def posts(){
+		render(view:"/group/posts")
+	}
+	def roundtable(){
+		render(view:"/group/roundtable")
+	}
+	
 
 	def createGroupProcess(){
 		errorList = []
@@ -83,14 +90,58 @@ class GroupController {
 		def publicacion = new Publicacion(postOwner:session.user,
 			postDate:new Date(),postBody:post_body,groupRelated:grupo)
 		publicacion.save()
-		render (template:"/modules/postlistmodule",model:['grupo':Grupo.get(groupId)])
+		render (template:"/modules/postlistmodule",model:['postList':Grupo.get(groupId).postList])
 	}
 	
 	def deletePost(){
-		print "preparando..."
 		def publicacion = Publicacion.get(params.id)
 		grupo.removeFromPostList(publicacion)
-		render ([grupo.postList] - [publicacion])
-		//render (template:"/modules/postlistmodule",model:['grupo':Grupo.get(groupId)])
+		def pToList = showPublicationList(Grupo.get(groupId).postList, publicacion)
+		render (template:"/modules/postlistmodule",model:['postList':pToList])
 	}
+	
+	def deleteComment(){
+		print "eliminando"
+		def comment = Comentario.get(params.id)
+		def post = comment.postLinked
+		post.removeFromCommentList(comment)
+		comment.delete()
+		def commentList = Publicacion.get(post.id).commentList
+		def cToList = showCommentList(commentList, comment)
+		render template:"/modules/commentlistmodule",
+				model:['commentList':cToList,'isAdmin':isAdmin]
+	}
+	
+	def showPublicationList(postList,Publicacion postException){
+		def listToReturn = []
+		for(Publicacion postItem:postList){
+			if(postItem.id!=postException.id){
+				listToReturn+=postItem
+			}
+		}
+		return listToReturn
+	}
+	
+	def showCommentList(commentList,Comentario commentException){
+		def listToReturn = []
+		for(Comentario commentItem:commentList){
+			if(commentItem.id!=commentException.id){
+				listToReturn+=commentItem
+			}
+		}
+		//print listToReturn
+		return listToReturn
+	}
+	
+	def addComment(){
+		def post_id = params.post_id
+		def comment_body = params.comment_body
+		def publicacion = Publicacion.get(post_id)
+		def comment = new Comentario(owner:session.user,
+			commentDate:new Date(),commentBody:comment_body,postLinked:publicacion)
+		comment.save(flush:true)
+		render template:"/modules/commentlistmodule",
+				model:['commentList':publicacion.commentList,'isAdmin':isAdmin]
+	}
+	
 }

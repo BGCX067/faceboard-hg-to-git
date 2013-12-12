@@ -20,6 +20,9 @@ class Grupo {
 	static belongsTo = User
     static constraints = {
     }
+	static mapping = {
+		postList(sort:'postDate', order:'desc')
+	}
 	def groupState(option){
 		switch(option){
 			case "TO_START":

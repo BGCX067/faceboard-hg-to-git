@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<content tag="userinfocontent"> 
-			<g:link >
+			<g:link controller="profile">
 			${session["user"].login }
 			</g:link>
 			&nbsp;&nbsp;&nbsp;
