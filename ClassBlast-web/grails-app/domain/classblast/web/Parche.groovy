@@ -1,17 +1,15 @@
 package classblast.web
 
 class Parche {
-	enum CommunityType{OPEN,PUBLIC,PRIVATE}
 	String communityName
 	String communityDescription
 	Date creationDate
-	Curso courseRelated
-	Semestre semesterRelated
-	CommunityType communityType
+	String communityType
 	static hasMany = [
 		communityRolList:Rol,
 		postList:Publicacion,
-		userList:User
+		userList:User,
+		tagList:Tag
 		]
 	static belongsTo = User
     static constraints = {

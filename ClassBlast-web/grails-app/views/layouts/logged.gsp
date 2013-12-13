@@ -8,7 +8,7 @@
 	<body>
 		<content tag="userinfocontent"> 
 			<g:link controller="profile">
-			${session["user"].login }
+			<span style="color:white">${session["user"].login }</span>
 			</g:link>
 			&nbsp;&nbsp;&nbsp;
 			<g:link >

@@ -144,4 +144,8 @@ class GroupController {
 				model:['commentList':publicacion.commentList,'isAdmin':isAdmin]
 	}
 	
+	def an(){
+		render view:"/community/create"
+	}
+	
 }

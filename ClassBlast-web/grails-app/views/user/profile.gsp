@@ -6,9 +6,14 @@
 </head>
 <body>
 	<script type="text/javascript">
-		$(function(){$("#edit_profile").hide()})
+		$(function() {
+			$("#edit_profile").hide()
+		})
 	</script>
-	<g:render template="/modules/mainmenu" />
+	<div id="me" class="divi">
+		<g:render template="/modules/mainmenu"
+			model="${[groupList:groupList,communityList:communityList]}" />
+	</div>
 	<h2>
 		${profile.firstName}
 		${profile.lastName}
@@ -33,34 +38,37 @@
 		<g:if test="${profile.groupList.size()>0}">
 			<g:each in="${groupMap}" var="groupItem">
 				<g:link controller="group" params="[groupid:groupItem.group.id]">
-				${groupItem.group.groupName}
-				</g:link>(${groupItem.rol})<br/>
+					${groupItem.group.groupName}
+				</g:link>(${groupItem.rol})<br />
 			</g:each>
 		</g:if>
 		<g:else>
 			<p>No estás en ningún curso actualmente</p>
 		</g:else>
 	</div>
-	
+
 	<div id="communities">
 		<h3>Mis parches</h3>
 		<g:if test="${profile.communityList.size()>0}">
-			<g:each in="${profile.community}" var="communityItem">
-				<g:link controller="community" params="[communityid:communityItem.id]">
-				${communityItem.communityName}
-				</g:link><br/>
+			<g:each in="${profile.communityList}" var="communityItem">
+				<g:link controller="community"
+					params="[communityid:communityItem.id]">
+					${communityItem.communityName}
+				</g:link>
+				<br />
 			</g:each>
 		</g:if>
 		<g:else>
 			<p>No estás en ningún parche actualmente</p>
 		</g:else>
 	</div>
-	
-	<g:actionSubmit value="Editar mi perfil" onclick="show('#edit_profile')"/>
-	
+
+	<g:actionSubmit value="Editar mi perfil"
+		onclick="show('#edit_profile')" />
+
 	<div id="edit_profile">
-	<g:formRemote url="['action':editProfile]" name="edit_profile_fr">
-	</g:formRemote>
+		<g:formRemote url="['action':editProfile]" name="edit_profile_fr">
+		</g:formRemote>
 	</div>
 </body>
 </html>

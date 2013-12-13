@@ -9,6 +9,9 @@ class MainController {
 	
     def index() {
 		this.templateToRender= session["user"]==null?"nologged":"logged"
+		if(session.user){
+			redirect(controller:"welcome")
+		}
 		[myDomainObjList:this.findAll()] }
 	
 }

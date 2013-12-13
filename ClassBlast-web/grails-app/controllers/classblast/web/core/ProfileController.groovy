@@ -1,5 +1,6 @@
 package classblast.web.core
 
+import main.GeneralUtils
 import main.UserUtils
 import classblast.web.Grupo;
 import classblast.web.Rol
@@ -10,7 +11,11 @@ class ProfileController {
 	def profile
 	def isOtherUser
 	def groupMap = []
+	def groupList
+	def communityList
 	def index() {
+		groupList = new GeneralUtils().loadCollectionsOfUser(session["user"])
+		communityList = new GeneralUtils().loadCommunityListOfUser(session["user"])
 		if(params.profileid!=null){
 			profile = User.get(params.profileid)
 			isOtherUser = session.user.id != profile.id

@@ -6,10 +6,12 @@ class Curso {
 		facultyList:Facultad,
 		semesterList:Semestre,
 		bookList:Cuaderno,
-		groupList:Grupo
+		groupList:Grupo,
+		tagList:Tag
 		]
 	static belongsTo = Carrera
 	String courseName
     static constraints = {
+		tagList nullable:true
     }
 }

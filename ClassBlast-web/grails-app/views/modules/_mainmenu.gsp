@@ -29,7 +29,7 @@
 					<li><g:link controller="community" action="create">Crear nuevo parche</g:link></li>
 				</g:if>
 				<g:if test="${communityList!=[]}">
-					<g:each in="${groupList}" var="communityItem">
+					<g:each in="${communityList}" var="communityItem">
 						<li><g:link controller="community">${communityItem.communityName}</g:link></li>
 					</g:each>
 				</g:if>
@@ -41,6 +41,7 @@
 		<li><g:link>Comentarios</g:link></li>
 		<li><g:link>Tareas</g:link></li>
 	</ul>
-	<g:link>Atrás</g:link>
+	<g:link onclick="javascript:history.go(-1)" 
+		url="javascript:history.go(-1)">Atrás</g:link>
 </section>
 

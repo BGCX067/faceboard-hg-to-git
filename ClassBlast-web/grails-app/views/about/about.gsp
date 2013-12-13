@@ -25,7 +25,7 @@
 			</g:link>
 		</div>
 		<div id="main">
-			<p>Bla bla bla</p> <!-- centrar la imagen -->
+			<p>Aplicación creada para laq asignatura ingeniería de software 2</p> <!-- centrar la imagen -->
 		</div>
 	</div>
 </body>

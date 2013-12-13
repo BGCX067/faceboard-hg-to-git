@@ -1,6 +1,6 @@
 package classblast.web.core
 
-class ComunnityController {
+class ChatController {
 
     def index() { }
 }
