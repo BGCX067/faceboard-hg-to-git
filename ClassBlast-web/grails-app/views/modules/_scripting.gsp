@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	$(function() {
 		$(".comment_field").hide();
+		$(".comment_edit").hide();
 	})
 	function confirmMessage(id) {
 		if (confirm("¿Estás seguro?")) {
@@ -48,6 +49,51 @@
 		$("form#mf").fadeIn();
 		repaint();
 	}
+
+
+	
+	function enableEditComment(id,body){
+		$("#edit_comment"+id+" input#comment_body").val(body);
+		$("#edit_comment"+id+" textarea#comment_body").val(body);
+		$(".edit_comment_command").hide();
+		$("#show_comment"+id).fadeOut(function(){
+			$("#edit_comment"+id).fadeIn();
+			return true;
+		});
+		return true;
+	}
+
+	function enableEditPost(id,body){
+		$("#edit_post"+id+" input#post_body").val(body);
+		$("#edit_post"+id+" textarea#post_body").val(body);
+		$(".edit_post_command").hide();
+		$("#show_post"+id).fadeOut(function(){
+			$("#edit_post"+id).fadeIn();
+			return true;
+		});
+		return true;
+	}
+	
+	function repaintComment(id){
+		$("#edit_comment"+id).fadeOut(function(){
+			$("#edit_comment"+id+" input#comment_body").val('');
+			$("#edit_comment"+id+" textarea#comment_body").val('');
+			$(".edit_comment_command").show();
+			$("#show_comment"+id).fadeIn();
+			})
+	}
+
+	function repaintPost(id){
+		$("#edit_post"+id).fadeOut(function(){
+			$("#edit_post"+id+" input#post_body").val('');
+			$("#edit_post"+id+" textarea#post_body").val('');
+			$(".edit_post_command").show();
+			$("#show_post"+id).fadeIn();
+			})
+	}
+
+
+	
 	function load_comment_field(id) {
 		if ($("#add_comment" + id + " a").html() == "Agregar comentario") {
 			$("#comment_field" + id).show();

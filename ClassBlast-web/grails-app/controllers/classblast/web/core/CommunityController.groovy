@@ -3,10 +3,12 @@ package classblast.web.core
 import classblast.web.Comentario;
 import classblast.web.Parche
 import classblast.web.Publicacion;
+import classblast.web.Solicitud;
 import classblast.web.Rol
 import classblast.web.Tag
 import classblast.web.TipoRol
 import classblast.web.User
+import main.GeneralUtils
 
 class CommunityController {
 	def errorList = []
@@ -17,19 +19,20 @@ class CommunityController {
 	def parche
 	def isAdmin
 	def communityId
-
+	def groupList
+	def communityList
+	def isUserInCommunity
+	def isRequestSent
 	def index() {
-		communityId = params.communityid
-		parche = Parche.get(communityId==null?NO_ID:communityId)
-		def userRolInCommunity = communityId!=null?
-				Rol.findByRolOwnerAndCommunityRelated(session.user,parche):null
-		def typeRolInCommunity = userRolInCommunity!=null?userRolInCommunity.rolType.rolType:null
-		isAdmin = typeRolInCommunity==ADMIN_COMMUNITY_ROL
-		communityNotFound = (communityId==null || parche==null)
+		parametersLoad()
 		render (view:"/community/index",
 		model:[communityNotFound:communityNotFound,
 			parche:parche,
-			isAdmin:isAdmin])
+			isAdmin:isAdmin,
+			isUserInCommunity:isUserInCommunity,
+			isRequestSent:isRequestSent,
+			groupList:groupList,
+			communityList:communityList])
 	}
 
 	def setup(){
@@ -52,6 +55,20 @@ class CommunityController {
 
 	def create() {
 		render (view:"/community/create")
+	}
+	
+	def userspanel(){
+		parametersLoad()
+		if(communityNotFound || !isUserInCommunity || !isAdmin){
+			redirect(action:"index", params:[communityid:communityId])
+		}
+		else{
+			render(view:"/community/userspanel",
+			model:[parche:parche,
+				isAdmin:isAdmin,
+				groupList:groupList,
+				communityList:communityList])
+		}
 	}
 
 	def createCommunityProcess(){
@@ -147,6 +164,8 @@ class CommunityController {
 			redirect(action:"index",params:[communityid:parche.id])
 		}
 	}
+	
+	
 
 	def createPost(){
 		def post_title = params.post_title
@@ -154,6 +173,13 @@ class CommunityController {
 		def publicacion = new Publicacion(postOwner:session.user,
 		postDate:new Date(),postBody:post_body,communityRelated:parche)
 		publicacion.save()
+		render (template:"/modules/postlistmodule",model:['postList':Parche.get(communityId).postList])
+	}
+	
+	def editPost(){
+		def post = Publicacion.get(params.post_id)
+		post.postBody = params.post_body
+		post.save()
 		render (template:"/modules/postlistmodule",model:['postList':Parche.get(communityId).postList])
 	}
 
@@ -165,7 +191,6 @@ class CommunityController {
 	}
 
 	def deleteComment(){
-		print "eliminando"
 		def comment = Comentario.get(params.id)
 		def post = comment.postLinked
 		post.removeFromCommentList(comment)
@@ -207,4 +232,55 @@ class CommunityController {
 		render template:"/modules/commentlistmodule",
 		model:['commentList':publicacion.commentList,'isAdmin':isAdmin]
 	}
+	
+	def editComment(){
+		def comment = Comentario.get(params.comment_id)
+		def post = comment.postLinked
+		comment.commentBody = params.comment_body
+		comment.save()
+		def commentList = Publicacion.get(post.id).commentList
+		render template:"/modules/commentlistmodule",
+		model:['commentList':commentList,'isAdmin':isAdmin]
+	}
+	
+	def sendRequest(){
+		def requestt = new Solicitud(requestDate: new Date(), communityRelated:parche,
+		userInterested:session.user,requestState:"Pendiente")
+		requestt.save(flush:true)
+		isRequestSent = true
+		render template:"/modules/request_controls", model:['isRequestSent':isRequestSent]
+	}
+
+	def cancelRequest(){
+		def requestList = Solicitud.findAllByUserInterestedAndCommunityRelated(session.user,parche)
+		isRequestSent = false
+		requestList.each{
+			if(!it.requestState.equals("cancelado")){
+				it.requestState = "cancelado"
+				it.save(flush:true)
+			}
+		}
+		render template:"/modules/request_controls", model:['isRequestSent':isRequestSent]
+	}
+	
+	def parametersLoad(){
+		groupList = new GeneralUtils().loadCollectionsOfUser(session["user"])
+		communityList = new GeneralUtils().loadCommunityListOfUser(session["user"])
+		communityId = params.communityid
+		parche = Parche.get(communityId==null?NO_ID:communityId)
+		def userRolInCommunity = communityId!=null?
+				Rol.findByRolOwnerAndCommunityRelated(session.user,parche):null
+		def typeRolInCommunity = userRolInCommunity!=null?userRolInCommunity.rolType.rolType:null
+		isAdmin = typeRolInCommunity==ADMIN_COMMUNITY_ROL
+		communityNotFound = (communityId==null || parche==null)
+		isUserInCommunity = communityNotFound?!communityNotFound:new GeneralUtils().isUserInCommunity(session.user,parche)
+		def requestList = Solicitud.findAllByUserInterestedAndCommunityRelated(session.user,parche)
+		isRequestSent = false
+		requestList.each{
+			if(!it.requestState.equals("cancelado"))
+				isRequestSent = true
+		}
+	}
+	
+	
 }

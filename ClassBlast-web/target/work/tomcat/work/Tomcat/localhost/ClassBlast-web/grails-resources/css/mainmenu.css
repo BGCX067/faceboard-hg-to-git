@@ -7,7 +7,6 @@
 .list-menu{
 	 padding:0;
 	 list-style:none;
-	 border: 1px solid rgba(0,0,0,0.8);
 	 margin-top: -1px;
 	 /*box-shadow: 0 0 10px rgba(0,0,0,0.9);*/
 }
@@ -15,7 +14,7 @@
 	 display: block;
 	 border-bottom: 1px solid rgba(0,0,0, 0.2);
 	 border-top: 1px solid rgba(255,255,255, 0.2);
-	 background:rgba(36,64,90,1);
+	 background:#00A3C1;
 	 text-decoration:none;
 	 color:rgb(255,255,255);
 	 /*text-shadow: 0px 0px 12px rgba(0,0,0,0.5);
@@ -31,11 +30,10 @@
 }
  
 .list-menu li a:hover{
-	 background:rgba(6,33,49,1);
+	 background:#66A3C1;
 	/* -moz-transition: background 0.3s ease-in;
 	 -webkit-transition: background 0.3s ease-in;
 	 -o-transition: background 0.3s ease-in;*/
-	 border: solid 1px rgba(0,0,0,0.3);
 }
  
 .list-menu ul{
@@ -56,7 +54,7 @@
 }
  
 .list-menu li:hover ul{
-	 max-height: 120px;
+	 max-height: 1200px;
 	 overflow-y:auto;
 	 overflow-x:hidden;
 	 background:rgba(108,151,176,0.5);

@@ -18,6 +18,26 @@ class GeneralUtils {
 		return new User().loadCommunityList(user)
 	}
 
+	def isUserInGroup(User user, Grupo group){
+		def userList = group.userList
+		def found = false
+		userList.each {
+			if(it.id==user.id)
+				found=true
+		}
+		found
+	}
+	
+	def isUserInCommunity(User user, Parche community){
+		def userList = community.userList
+		def found = false
+		userList.each {
+			if(it.id==user.id)
+				found=true
+		}
+		found
+	}
+	
 	def getRolByUserAndGroup(User user, Grupo group){
 		return Rol.findByOwnerAndGroupRelated(user,group);
 	}

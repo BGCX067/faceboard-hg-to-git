@@ -1,6 +1,7 @@
 package main
 
 import classblast.web.Rol
+import classblast.web.TipoRol
 import classblast.web.User
 import javax.servlet.http.HttpSession
 import org.springframework.http.HttpRequest
@@ -27,6 +28,9 @@ class UserUtils {
 					registerDate:new Date(),
 					encryptedPassword:encryptedPassword)
 			newUser.save()
+			def newRol = new Rol(rolType: TipoRol.findAllByRolDescription("Estudiante").get(0),
+				rolOwner: newUser)
+			newRol.save(flush:true)
 			return true
 		}
 		catch(Exception e){
@@ -49,7 +53,6 @@ class UserUtils {
 			session["user"] = this.targetUser
 		}
 		catch(Exception e){
-			print e
 			return false
 		}
 		return true

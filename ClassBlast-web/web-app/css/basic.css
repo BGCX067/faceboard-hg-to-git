@@ -135,3 +135,71 @@ header section{
 	width:24px;
 	height:24px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Aquí lo hecho por Daniel */
+#conr {
+	width: 100%;
+}
+.divi {
+	border: solid #8BC600;
+	border-width: 5px;
+}
+#ma {
+	width: 78%;
+	float: left;
+	height: 500px;
+}
+
+#me {
+	width: 20%;
+	float: left;
+	height: 500px;
+}
+#sub {
+	width: 100%;
+	float: left;
+	text-align: center;
+	border: solid #8BC600;
+}
+#sub-me {
+	width: 32%;
+	float: left;
+	padding: 5px;
+}
+
+#sub-me {
+	width: 32%;
+	float: left;
+	padding: 5px;
+}
+#pu-label {
+}
+#pu-tfield textarea{
+	margin-left:4%;
+	width: 90%;
+	border-radius: 5px;
+}
+
+#pu-tfield input{
+	margin-left:4%;
+	width: 90%;
+	border-radius: 5px;
+}
+#pu-bt {
+	padding: 5px;
+	margin-left:74%;
+	width: 20%;
+}

@@ -9,7 +9,11 @@
 		class="registerForm">
 		<g:img dir="images/icons" file="signup-48.ico" class="middle"
 			class="middle leftSideForm" />
-		<span>Creación de nuevo grupo</span>
+		<span>Creación de nuevo grupo</span><br/>
+		<span style="font-size:0.8em;color:gray">Usted puede crear un grupo para mantener informados a sus alumnos acerca de
+	todo lo que suceda en la asignatura. Podrá subir archivos, asignar tareas,
+	administrar apuntes de clase y le permitirá a sus alumnos comunicarse a 
+	través de mesas redondas.</span>
 		<br />
 		<br />
 		<g:if test="${errorList.size()>0}">

@@ -4,7 +4,7 @@
 	<g:link>Cursos</g:link>- &gt; 
 	<br/><br/>
 	<ul class="list-menu">
-		<li><g:link>Cursos</g:link>
+		<li><g:link onclick="return(false)" style="cursor:default">Cursos</g:link>
 			<ul>
 				<g:if test="${true}">
 					<li><g:link controller="group" action="create">Crear nuevo grupo</g:link></li>
@@ -23,14 +23,15 @@
 		<li><g:link controller="alert">Notificaciones</g:link></li>
 		<li><g:link controller="profile">Perfil</g:link></li>
 		<li><g:link controller="post">Publicaciones</g:link></li>
-		<li><g:link>Parches</g:link>
+		<li><g:link onclick="return(false)" style="cursor:default">Parches</g:link>
 			<ul>
 				<g:if test="${true}">
 					<li><g:link controller="community" action="create">Crear nuevo parche</g:link></li>
 				</g:if>
 				<g:if test="${communityList!=[]}">
 					<g:each in="${communityList}" var="communityItem">
-						<li><g:link controller="community">${communityItem.communityName}</g:link></li>
+						<li><g:link controller="community"
+						params="[communityid:communityItem.id]">${communityItem.communityName}</g:link></li>
 					</g:each>
 				</g:if>
 				<g:else>

@@ -1,11 +1,13 @@
 package classblast.web
 
 class Solicitud {
-	enum RequestState{EN_PROCESO,ACEPTADO,RECHAZADO}
+	User userInterested
 	Grupo groupRelated
 	Parche communityRelated
 	Date requestDate
-	RequestState requestState
+	String requestState
     static constraints = {
+		groupRelated nullable:true
+		communityRelated nullable:true
     }
 }

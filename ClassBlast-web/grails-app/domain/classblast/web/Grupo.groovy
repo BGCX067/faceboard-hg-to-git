@@ -22,6 +22,12 @@ class Grupo {
     }
 	static mapping = {
 		postList(sort:'postDate', order:'desc')
+		groupRolList cascade: 'all-delete-orphan'
+		fileList cascade: 'all-delete-orphan'
+		homeworkList cascade: 'all-delete-orphan'
+		meetingList cascade: 'all-delete-orphan'
+		postList cascade: 'all-delete-orphan'
+		userList cascade: 'all-delete-orphan'
 	}
 	def groupState(option){
 		switch(option){
