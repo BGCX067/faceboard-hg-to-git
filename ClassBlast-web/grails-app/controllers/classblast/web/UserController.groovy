@@ -143,6 +143,24 @@ class UserController {
 		email=""
 	}
 	def recover(){
+		/*print User.get(3).firstName+" "+User.get(3).lastName;
+		print TipoRol.get(3).rolDescription
+		def tipoRolList = TipoRol.findAllByRolDescription("Estudiante de grupo")
+		print TipoRol.findAllByRolDescription("Estudiante de grupo").get(0).rolType
+		print TipoRol.findAllByRolDescriptionLike("E%").get(2).rolType
+		tipoRolList.each{
+			print it.rolType
+		}
+		def nameList = ["alex","jairo"]
+		print User.withCriteria {
+			or{
+				nameList.each {
+					like('firstName',"%"+it+"%")
+					like('lastName',"%"+it+"%")
+				}
+			}
+		}*/
+		print session.user.firstName
 		redirect url:"/construction"
 	}
 

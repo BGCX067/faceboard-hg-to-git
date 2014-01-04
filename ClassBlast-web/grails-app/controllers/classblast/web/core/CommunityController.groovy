@@ -23,6 +23,10 @@ class CommunityController {
 	def communityList
 	def isUserInCommunity
 	def isRequestSent
+	def resultsUserList
+	def communityPossibleRolList
+	def searchUserInput
+	def searchNewUserInput
 	def index() {
 		parametersLoad()
 		render (view:"/community/index",
@@ -56,9 +60,14 @@ class CommunityController {
 	def create() {
 		render (view:"/community/create")
 	}
-	
+
 	def userspanel(){
 		parametersLoad()
+		def pendingRequestList = Solicitud.findAllByCommunityRelatedAndRequestState(parche,"Pendiente")
+		communityPossibleRolList = [
+			TipoRol.findByRolType("AdministradorParche"),
+			TipoRol.findByRolType("ParticipanteParche")
+		]
 		if(communityNotFound || !isUserInCommunity || !isAdmin){
 			redirect(action:"index", params:[communityid:communityId])
 		}
@@ -67,7 +76,9 @@ class CommunityController {
 			model:[parche:parche,
 				isAdmin:isAdmin,
 				groupList:groupList,
-				communityList:communityList])
+				communityList:communityList,
+				pendingRequestList:pendingRequestList,
+				rolList:communityPossibleRolList])
 		}
 	}
 
@@ -118,7 +129,7 @@ class CommunityController {
 			redirect(action:"index",params:[communityid:parche.id])
 		}
 	}
-	
+
 	def editCommunityProcess(){
 		errorList = []
 		def tagList = []
@@ -164,8 +175,8 @@ class CommunityController {
 			redirect(action:"index",params:[communityid:parche.id])
 		}
 	}
-	
-	
+
+
 
 	def createPost(){
 		def post_title = params.post_title
@@ -175,7 +186,7 @@ class CommunityController {
 		publicacion.save()
 		render (template:"/modules/postlistmodule",model:['postList':Parche.get(communityId).postList])
 	}
-	
+
 	def editPost(){
 		def post = Publicacion.get(params.post_id)
 		post.postBody = params.post_body
@@ -232,7 +243,7 @@ class CommunityController {
 		render template:"/modules/commentlistmodule",
 		model:['commentList':publicacion.commentList,'isAdmin':isAdmin]
 	}
-	
+
 	def editComment(){
 		def comment = Comentario.get(params.comment_id)
 		def post = comment.postLinked
@@ -242,7 +253,7 @@ class CommunityController {
 		render template:"/modules/commentlistmodule",
 		model:['commentList':commentList,'isAdmin':isAdmin]
 	}
-	
+
 	def sendRequest(){
 		def requestt = new Solicitud(requestDate: new Date(), communityRelated:parche,
 		userInterested:session.user,requestState:"Pendiente")
@@ -262,7 +273,102 @@ class CommunityController {
 		}
 		render template:"/modules/request_controls", model:['isRequestSent':isRequestSent]
 	}
+
+	def searchUserInAdmin(){
+		searchUserInput = params.newuserdescription
+		executeSearch(params.userdescription,params.modesearch)
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'parche',
+			'userList':resultsUserList,'parche':parche,'rolList':communityPossibleRolList])
+	}
 	
+	def searchNewUserInAdmin(){
+		searchNewUserInput = params.newuserdescription
+		resultsUserList = new GeneralUtils().
+							loadSelectedUserListWithCommunityByNameAndNotInside(searchNewUserInput,parche)
+		render(template:"/modules/userspanel/newusersdtable",model:['mode':'parche',
+			'userList':resultsUserList,'parche':parche,'rolList':communityPossibleRolList,
+			'messageNotFound':'No hay usuarios con esa descripción'])
+	}
+
+	def executeSearch(userDescription,modeSearch){
+		def gu = new GeneralUtils()
+		resultsUserList = []
+		if(modeSearch=='Por nombre'){
+			resultsUserList = gu.loadSelectedUserListWithCommunityByName(userDescription,parche)
+		}
+		if(modeSearch=='Por usuario de login'){
+			resultsUserList = gu.loadSelectedUserListWithCommunityByLogin(userDescription, parche)
+		}
+		if(modeSearch=='Por correo'){
+			resultsUserList = gu.loadSelectedUserListWithCommunityByEmail(userDescription, parche)
+		}
+	}
+	def deleteSearchResults(){
+		for(int i=1;i<100000;i++){print i} //espera programada
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'parche',
+			'userList':Parche.get(parche.id).userList,'parche':Parche.get(parche.id),'rolList':communityPossibleRolList])
+	}
+
+	def acceptRequest(){
+		def requestObject = Solicitud.get(params.requestId)
+		User userInterested = requestObject.userInterested
+		def rolToAdd = TipoRol.findById(params.rol_field)
+		def rolToNewIntegrant = new Rol(rolType:rolToAdd,rolOwner:userInterested,communityRelated:Parche.get(parche.id))
+		rolToNewIntegrant.save(flush:true)
+		userInterested.addToCommunityList(Parche.get(parche.id))
+		userInterested.save(flush:true)
+		requestObject.requestState = "aceptado"
+		requestObject.save(flush:true)
+		render(template:"/modules/userspanel/requestsdtable",model:['mode':'parche',
+			'requestList':Solicitud.findAllByCommunityRelatedAndRequestState(parche,"Pendiente"),
+			'parche':parche,'rolList':communityPossibleRolList])
+	}
+
+	def changeRolOfUser(){
+		def userTarget = User.get(params.userId)
+		def newRolType = TipoRol.findById(params.rol_field_to_change)
+		def rolOfUser = Rol.findByRolOwnerAndCommunityRelated(userTarget,parche)
+		rolOfUser.rolType = newRolType
+		rolOfUser.save(flush:true)
+		render(template:"/modules/userspanel/usersrecord",model:['mode':'parche',
+			'userItem':userTarget,
+			'parche':parche,'rolList':communityPossibleRolList])
+	}
+
+	def rejectRequest(){
+		def requestObject = Solicitud.get(params.requestId)
+		requestObject.requestState = "rechazado"
+		requestObject.save(flush:true)
+		render(template:"/modules/userspanel/requestsdtable",model:['mode':'parche',
+			'requestList':Solicitud.findAllByCommunityRelatedAndRequestState(parche,"Pendiente"),
+			'parche':parche,'rolList':communityPossibleRolList])
+	}
+
+	def addUserTo(){
+		def userTarget = User.get(params.userId)
+		def rolToAdd = TipoRol.findById(params.rol_field2)
+		def rolToNewIntegrant = new Rol(rolType:rolToAdd,rolOwner:userTarget,communityRelated:Parche.get(parche.id))
+		rolToNewIntegrant.save(flush:true)
+		userTarget.addToCommunityList(Parche.get(parche.id))
+		userTarget.save(flush:true)
+		render(template:"/modules/userspanel/newusersdtable",model:['mode':'parche',
+			'userList':new GeneralUtils().loadSelectedUserListWithCommunityByNameAndNotInside(searchNewUserInput,parche),
+			'parche':parche,'rolList':communityPossibleRolList,
+			'messageNotFound':'No hay usuarios con esa descripción'])
+	}
+	
+	def deleteUserFrom(){
+		def userToDeleteFrom = User.get(params.userId)
+		def communityRelated = Parche.get(parche.id)
+		def rolFromUserToDelete = Rol.findByRolOwnerAndCommunityRelated(userToDeleteFrom,communityRelated)
+		rolFromUserToDelete.delete(flush:true)
+		userToDeleteFrom.removeFromCommunityList(communityRelated)
+		communityRelated.save()
+		userToDeleteFrom.save()
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'parche',
+			'userList':communityRelated.userList,'parche':parche,'rolList':communityPossibleRolList])
+	}
+
 	def parametersLoad(){
 		groupList = new GeneralUtils().loadCollectionsOfUser(session["user"])
 		communityList = new GeneralUtils().loadCommunityListOfUser(session["user"])
@@ -277,10 +383,8 @@ class CommunityController {
 		def requestList = Solicitud.findAllByUserInterestedAndCommunityRelated(session.user,parche)
 		isRequestSent = false
 		requestList.each{
-			if(!it.requestState.equals("cancelado"))
+			if(it.requestState.equals("Pendiente"))
 				isRequestSent = true
 		}
 	}
-	
-	
 }

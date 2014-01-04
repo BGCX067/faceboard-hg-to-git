@@ -9,48 +9,26 @@
 	<div id="con">
 		<div id="ma" class="divi">
 			<h2>
-				${grupo.groupName}
+				<g:link controller="group" params="${[groupid:grupo.id]}">
+					${grupo.groupName}
+				</g:link>
 			</h2>
-			${groupid}
 			<p style="color: #AAAAAA; padding: 5px 5px;">
 				${grupo.groupDescription}
 			</p>
-			<g:if test="${isAdmin}">
-				<div id="sub">
-					<div id="sub-me">
-						<g:link action="setup">Editar</g:link>
-					</div>
-					<div id="sub-me">
-						<g:link action="delete">Eliminar grupo</g:link>
-					</div>
-					<div id="sub-me">
-						<g:link action="userspanel">Administrar usuarios</g:link>
-					</div>
-				</div>
+			<g:render template="/modules/userspanel/userList"
+				model="${[mode:'grupo',userList:grupo.userList]}" />
+			<g:if test="${pendingRequestList.size()>0}">
+				<g:render template="/modules/userspanel/requestpending"
+					model="${[mode:'grupo',requestList:pendingRequestList]}" />
 			</g:if>
-			<div
-				style="width: 70%; border: solid #8BC600; margin-top: 50px; margin-left: 14.7%;">
-				<div>Escribe una publicación</div>
-				<g:formRemote name="mf" on404="alert('not found!)"
-					update="post_list" url="[controller:'group',action:'createPost']"
-					onSuccess="repaintPostForm()">
-					<div id="pu-tfield">
-						<g:textArea name="post_body" />
-					</div>
-					<div id="pu-bt">
-						<g:actionSubmit value="Crear"
-							onclick="return(processCreatePost())" />
-					</div>
-				</g:formRemote>
-			</div>
-			<div
-				style="width: 70%; border: solid #8BC600; padding-top: 10px; margin: auto;">
-				<g:render template="/modules/postlistmodule"
-					model="['postList':grupo.postList]" />
-			</div>
-
+			<g:render template="/modules/userspanel/newuserlist"
+				model="${[mode:'grupo',userList:grupo.userList]}" />
 		</div>
 		<div id="me" class="divi">
+			<g:if test="${isUserInGroup}">
+				<g:render template="/modules/groupmenu" model="${[group:group]}" />
+			</g:if>
 			<g:render template="/modules/mainmenu"
 				model="${[groupList:groupList,communityList:communityList]}" />
 		</div>

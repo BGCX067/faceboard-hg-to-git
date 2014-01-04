@@ -15,7 +15,7 @@ class ContentsearchController {
 		searchTarget = params.course_search
 		def communityResultList=[]
 		def groupResultList=[]
-		def courseResultList=Curso.findAllByCourseName(searchTarget)
+		def courseResultList=Curso.findAllByCourseNameLike(searchTarget)
 		if(Grupo.findAllByGroupName(searchTarget)!=null){
 			groupResultList+=Grupo.findAllByGroupName(searchTarget)
 		}

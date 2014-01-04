@@ -6,7 +6,7 @@
 	<ul class="list-menu">
 		<li><g:link onclick="return(false)" style="cursor:default">Cursos</g:link>
 			<ul>
-				<g:if test="${true}">
+				<g:if test="${session['isteacher']}">
 					<li><g:link controller="group" action="create">Crear nuevo grupo</g:link></li>
 				</g:if>
 				<g:if test="${groupList!=[]}">

@@ -6,6 +6,7 @@ class WelcomeController{
 	def groupList
 	def communityList
 	def taskList
+	def userIsTeacher
 	def index() {
 		if(session["user"]!=null){
 			groupList = new GeneralUtils().loadCollectionsOfUser(session["user"])

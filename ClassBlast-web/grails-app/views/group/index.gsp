@@ -75,7 +75,7 @@
 		<div id="con">
 			<div id="ma" class="divi">
 				<h2>
-					${grupo.groupName}
+					<g:link controller="group" params="${[groupid:grupo.id]}">${grupo.groupName}</g:link>
 				</h2>
 				<p style="color: #AAAAAA; padding: 5px 5px;">
 					${grupo.groupDescription}

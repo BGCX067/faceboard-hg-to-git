@@ -34,8 +34,10 @@
 	function clear(element) {
 		$(element).val('');
 	}
+	function clear_element(element) {
+		$(element).val('');
+	}
 	function nopaint() {
-
 	}
 	function repaint() {
 		$("#post_list").fadeIn();
@@ -118,4 +120,16 @@
 	function show(element){
 		$(element).show("slow");
 	}
+	function show_inline(element){
+		$(element).css('display','inline');
+	}
+
+	function triggerFormSubmitWithValue(input,submit){
+		$(input).val('')
+		$(submit).click()
+	}
+	function pressClick(element){
+		$(element).click();
+	}
+	
 </script>

@@ -25,6 +25,10 @@ class GroupController {
 	def isRequestSent
 	def groupList
 	def communityList
+	def resultsUserList
+	def groupPossibleRolList
+	def searchUserInput
+	def searchNewUserInput
 
 	def index() {
 		parametersLoad()
@@ -53,13 +57,22 @@ class GroupController {
 
 	def userspanel(){
 		parametersLoad()
+		def pendingRequestList = Solicitud.findAllByGroupRelatedAndRequestState(grupo,"Pendiente")
+		groupPossibleRolList = [
+			TipoRol.findByRolType("AdministradorGrupo"),
+			TipoRol.findByRolType("MonitorGrupo"),
+			TipoRol.findByRolType("EstudianteGrupo"),
+			TipoRol.findByRolType("AsistenteGrupo")
+		]
 		if(groupNotFound || !isUserInGroup || !isAdmin){
 			redirect(action:"index", params:[groupid:groupId])
 		}
 		else{
 			render(view:"/group/userspanel",
 			model:[grupo:grupo,isAdmin:isAdmin,groupList:groupList,
-				communityList:communityList])
+				communityList:communityList,
+				pendingRequestList:pendingRequestList,
+				rolList:groupPossibleRolList, isUserInGroup: isUserInGroup])
 		}
 	}
 
@@ -179,6 +192,12 @@ class GroupController {
 		model:['commentList':publicacion.commentList,'isAdmin':isAdmin]
 	}
 
+
+
+
+
+
+
 	def sendRequest(){
 		def requestt = new Solicitud(requestDate: new Date(), groupRelated:grupo,
 		userInterested:session.user,requestState:"Pendiente")
@@ -198,6 +217,113 @@ class GroupController {
 		}
 		render template:"/modules/request_controls", model:['isRequestSent':isRequestSent]
 	}
+
+	def searchUserInAdmin(){
+		searchUserInput = params.newuserdescription
+		executeSearch(params.userdescription,params.modesearch)
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'grupo',
+			'userList':resultsUserList,'grupo':grupo,'rolList':groupPossibleRolList])
+	}
+
+	def searchNewUserInAdmin(){
+		searchNewUserInput = params.newuserdescription
+		resultsUserList = new GeneralUtils().
+				loadSelectedUserListWithGroupByNameAndNotInside(searchNewUserInput,grupo)
+		render(template:"/modules/userspanel/newusersdtable",model:['mode':'grupo',
+			'userList':resultsUserList,'grupo':grupo,'rolList':groupPossibleRolList,
+			'messageNotFound':'No hay usuarios con esa descripción'])
+	}
+
+	def executeSearch(userDescription,modeSearch){
+		def gu = new GeneralUtils()
+		resultsUserList = []
+		if(modeSearch=='Por nombre'){
+			resultsUserList = gu.loadSelectedUserListWithGroupByName(userDescription,grupo)
+		}
+		if(modeSearch=='Por usuario de login'){
+			resultsUserList = gu.loadSelectedUserListWithGroupByLogin(userDescription, grupo)
+		}
+		if(modeSearch=='Por correo'){
+			resultsUserList = gu.loadSelectedUserListWithGroupByEmail(userDescription, grupo)
+		}
+	}
+	def deleteSearchResults(){
+		for(int i=1;i<100000;i++){print i} //espera programada
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'grupo',
+			'userList':Grupo.get(grupo.id).userList,'grupo':Grupo.get(grupo.id),'rolList':groupPossibleRolList])
+	}
+
+	def acceptRequest(){
+		def requestObject = Solicitud.get(params.requestId)
+		User userInterested = requestObject.userInterested
+		def rolToAdd = TipoRol.findById(params.rol_field)
+		def rolToNewIntegrant = new Rol(rolType:rolToAdd,rolOwner:userInterested,groupRelated:Grupo.get(grupo.id))
+		rolToNewIntegrant.save(flush:true)
+		userInterested.addToGroupList(Grupo.get(grupo.id))
+		userInterested.save(flush:true)
+		requestObject.requestState = "aceptado"
+		requestObject.save(flush:true)
+		render(template:"/modules/userspanel/requestsdtable",model:['mode':'grupo',
+			'requestList':Solicitud.findAllByGroupRelatedAndRequestState(grupo,"Pendiente"),
+			'grupo':grupo,'rolList':groupPossibleRolList])
+	}
+
+	def changeRolOfUser(){
+		def userTarget = User.get(params.userId)
+		def newRolType = TipoRol.findById(params.rol_field_to_change)
+		def rolOfUser = Rol.findByRolOwnerAndGroupRelated(userTarget,grupo)
+		rolOfUser.rolType = newRolType
+		rolOfUser.save(flush:true)
+		render(template:"/modules/userspanel/usersrecord",model:['mode':'grupo',
+			'userItem':userTarget,
+			'grupo':grupo,'rolList':groupPossibleRolList])
+	}
+
+	def rejectRequest(){
+		def requestObject = Solicitud.get(params.requestId)
+		requestObject.requestState = "rechazado"
+		requestObject.save(flush:true)
+		render(template:"/modules/userspanel/requestsdtable",model:['mode':'grupo',
+			'requestList':Solicitud.findAllByGroupRelatedAndRequestState(grupo,"Pendiente"),
+			'grupo':grupo,'rolList':groupPossibleRolList])
+	}
+
+	def addUserTo(){
+		def userTarget = User.get(params.userId)
+		def rolToAdd = TipoRol.findById(params.rol_field2)
+		def rolToNewIntegrant = new Rol(rolType:rolToAdd,rolOwner:userTarget,groupRelated:Grupo.get(grupo.id))
+		rolToNewIntegrant.save(flush:true)
+		userTarget.addToGroupList(Grupo.get(grupo.id))
+		userTarget.save(flush:true)
+		render(template:"/modules/userspanel/newusersdtable",model:['mode':'grupo',
+			'userList':new GeneralUtils().loadSelectedUserListWithGroupByNameAndNotInside(searchNewUserInput,grupo),
+			'grupo':grupo,'rolList':groupPossibleRolList,
+			'messageNotFound':'No hay usuarios con esa descripción'])
+	}
+
+	def deleteUserFrom(){
+		print "entering"
+		def userToDeleteFrom = User.get(params.userId)
+		def groupRelated = Grupo.get(grupo.id)
+		def rolFromUserToDelete = Rol.findByRolOwnerAndGroupRelated(userToDeleteFrom,groupRelated)
+		try{
+			userToDeleteFrom.removeFromGroupList(groupRelated)
+			userToDeleteFrom.removeFromRolList(rolFromUserToDelete)
+			rolFromUserToDelete.delete(flush:true)
+			groupRelated.save()
+		}
+		catch(Exception e){
+
+		}
+		print Grupo.get(grupo.id).userList
+		render(template:"/modules/userspanel/usersdtable",model:['mode':'grupo',
+			'userList':Grupo.get(grupo.id).userList,'grupo':Grupo.get(grupo.id),'rolList':groupPossibleRolList])
+	}
+
+
+
+
+
 
 	def parametersLoad(){
 		groupList = new GeneralUtils().loadCollectionsOfUser(session["user"])

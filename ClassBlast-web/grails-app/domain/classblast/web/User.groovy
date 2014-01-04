@@ -6,6 +6,7 @@ class User {
 	String firstName
 	String lastName
 	String encryptedPassword
+	String fullName = firstName+' '+lastName
 	Date registerDate
 	static hasMany = [
 		postList:Publicacion,
@@ -17,26 +18,47 @@ class User {
 		conversation2List:Conversacion,
 		rolList:Rol,
 		bookList:Cuaderno,
-		communityList:Parche
-		]
+		communityList:Parche,
+		notificationList:Notificacion
+	]
 	static mappedBy = [conversation1List:'user1Related',
 		conversation2List:'user2Related']
-    static constraints = {
-    }
+	static constraints = {
+	}
+	static transients = [ "fullName" ]
+
+	
 	def loadGroupList(user){
 		def studs = Grupo.withCriteria {
 			userList {
-			  eq('id', user.id)
+				eq('id', user.id)
 			}
-		  }
+		}
 		return studs
 	}
 	def loadCommunityList(user){
 		def studs = Parche.withCriteria {
 			userList {
-			  eq('id', user.id)
+				eq('id', user.id)
 			}
-		  }
+		}
 		return studs
+	}
+	
+	def getGroupRolOfUser(Grupo group){
+		def rolToReturn = null
+		this.rolList.each {
+			if(it.groupRelated!=null && it.groupRelated.id==group.id)
+				rolToReturn = it
+		}
+		rolToReturn
+	}
+	def getCommunityRolOfUser(Parche community){
+		def rolToReturn = null
+		this.rolList.each {
+			if(it.communityRelated!=null && it.communityRelated.id==community.id)
+				rolToReturn = it;
+		}
+		rolToReturn
 	}
 }

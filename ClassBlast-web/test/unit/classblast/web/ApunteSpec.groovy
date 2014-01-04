@@ -14,6 +14,10 @@ class ApunteSpec extends Specification {
 
     def cleanup() {
     }
+	
+	public static void main(int[] args){
+		print User.get(3);
+	}
 
     void "test something"() {
     }

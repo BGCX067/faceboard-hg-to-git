@@ -67,7 +67,7 @@
 		<div id="con">
 			<div id="ma" class="divi">
 				<h2>
-					${parche.communityName}
+					<g:link controller="group" params="${[communityid:parche.id]}">${parche.communityName}</g:link>
 				</h2>
 				<p style="color: #AAAAAA; padding: 5px 5px;">
 					${parche.communityDescription}

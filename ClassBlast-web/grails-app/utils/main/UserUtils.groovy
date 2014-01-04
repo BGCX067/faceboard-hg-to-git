@@ -51,6 +51,8 @@ class UserUtils {
 	def login(session){
 		try{
 			session["user"] = this.targetUser
+			session["isteacher"] = Rol.findByRolTypeAndRolOwner(
+				TipoRol.findByRolType("Docente"),this.targetUser)!=null
 		}
 		catch(Exception e){
 			return false

@@ -33,7 +33,8 @@
 			<g:render template="/welcome/coursesalerts" model="${[groupList:groupList,communityList:communityList]}"/>
 		</div>
 		<div id="me" class="divi">
-			<g:render template="/modules/mainmenu" model="${[groupList:groupList,communityList:communityList]}"/>
+			<g:render template="/modules/mainmenu" model="${[groupList:groupList,
+				communityList:communityList]}"/>
 		</div>
 	</div>
 	
