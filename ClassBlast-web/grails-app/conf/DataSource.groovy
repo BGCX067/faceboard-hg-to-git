@@ -3,7 +3,7 @@ dataSource {
 	driverClassName = "com.mysql.jdbc.Driver"
 	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     username = "root"
-    password = "12345"
+    password = "admin"
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -19,7 +19,7 @@ environments {
 			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
-			password = "12345"
+			password = "admin"
         }
     }
     test {
@@ -27,7 +27,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
-            password = "12345"
+            password = "admin"
         }
     }
     production {
@@ -35,7 +35,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/classblastdb?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
-            password = "12345"
+            password = "admin"
             /*properties {
                maxActive = -1
                minEvictableIdleTimeMillis=1800000

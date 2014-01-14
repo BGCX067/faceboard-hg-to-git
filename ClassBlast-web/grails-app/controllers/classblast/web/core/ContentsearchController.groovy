@@ -15,16 +15,16 @@ class ContentsearchController {
 		searchTarget = params.course_search
 		def communityResultList=[]
 		def groupResultList=[]
-		def courseResultList=Curso.findAllByCourseNameLike(searchTarget)
-		if(Grupo.findAllByGroupName(searchTarget)!=null){
+		def courseResultList=Curso.findAllByCourseNameLike("%"+searchTarget+"%")
+		if(Grupo.findAllByGroupName("%"+searchTarget+"%")!=null){
 			groupResultList+=Grupo.findAllByGroupName(searchTarget)
 		}
-		if(Curso.findAllByCourseName(searchTarget)!=null &&
-			Grupo.findAllByCourseRelated(Curso.findAllByCourseName(searchTarget))!=null){
-			groupResultList+=Grupo.findAllByCourseRelated(Curso.findAllByCourseName(searchTarget))
+		if(Curso.findAllByCourseNameLike("%"+searchTarget+"%")!=null &&
+			Grupo.findAllByCourseRelated(Curso.findAllByCourseName("%"+searchTarget+"%"))!=null){
+			groupResultList+=Grupo.findAllByCourseRelatedLike(Curso.findAllByCourseName("%"+searchTarget+"%"))
 		}
-		if(Parche.findAllByCommunityName(searchTarget)!=null){
-			communityResultList+=Parche.findAllByCommunityName(searchTarget)
+		if(Parche.findAllByCommunityNameLike("%"+searchTarget+"%")!=null){
+			communityResultList+=Parche.findAllByCommunityNameLike("%"+searchTarget+"%")
 		}
 		def communityListByTag = []
 		communityListByTag

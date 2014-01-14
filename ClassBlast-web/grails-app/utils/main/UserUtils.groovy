@@ -79,13 +79,26 @@ class UserUtils {
 	def returnMatchByProfileSearch(search){
 		def userList = User.getAll()
 		def userListToReturn = []
-		userList.each {
-			if(search==it.firstName || search==it.lastName
-			|| search==it.firstName+" "+it.lastName
-			|| search==it.email){
-				userListToReturn += it
-			}
+		
+		if(User.findAllByFirstNameLike("%"+search+"%")!=null){
+			userListToReturn+=User.findAllByFirstNameLike("%"+search+"%")
 		}
+		
+		if(User.findAllByLastNameLike("%"+search+"%")!=null){
+			userListToReturn+=User.findAllByLastNameLike("%"+search+"%")
+		}
+		
+		if(User.findAllByEmailLike("%"+search+"%")!=null){
+			userListToReturn+=User.findAllByEmailLike("%"+search+"%")
+		}
+
+//		userList.each {
+//			if(search==it.firstName || search==it.lastName
+//			|| search==it.firstName+" "+it.lastName
+//			|| search==it.email){
+//				userListToReturn += it
+//			}
+//		}
 		return userListToReturn
 	}
 }
