@@ -12,6 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'basic.css')}"
 	type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'chat.css')}"
+	type="text/css">
 <link rel="shortcut icon"
 	href="${resource(dir: 'images', file: 'logo.png')}" type="image/x-icon">
 <g:layoutHead />
@@ -114,6 +116,10 @@ h3:hover {
 	</div>
 	<div class="main-container">
 		<g:layoutBody />
+		<g:pageProperty name="page.userchat" />
+	</div>
+	<div class="footer">
+		Pie de página. &copy;Classblast 2014
 	</div>
 </body>
 </html>

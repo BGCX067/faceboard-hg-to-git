@@ -1,6 +1,7 @@
 package classblast.web
 
 import main.GeneralUtils;
+import main.SecurityUtils
 import main.UserUtils
 import main.ValidationUtils
 
@@ -73,7 +74,7 @@ class UserController {
 		if(!validationUtils.validateEmail(email)){
 			errorValidationList+="Por favor ingrese un correo electrónico válido"
 		}
-		
+
 		if(userUtils.userNameExists(userName)){
 			errorValidationList+="El nombre de usuario suministrado ya existe, por favor seleccione otro"
 		}
@@ -115,7 +116,7 @@ class UserController {
 		redirFromProcess=true
 		redirect action:"login"
 	}
-	
+
 	def logout(){
 		session.invalidate()
 		redirect controller:"main",action:"index"
@@ -143,26 +144,86 @@ class UserController {
 		email=""
 	}
 	def recover(){
-		/*print User.get(3).firstName+" "+User.get(3).lastName;
-		print TipoRol.get(3).rolDescription
-		def tipoRolList = TipoRol.findAllByRolDescription("Estudiante de grupo")
-		print TipoRol.findAllByRolDescription("Estudiante de grupo").get(0).rolType
-		print TipoRol.findAllByRolDescriptionLike("E%").get(2).rolType
-		tipoRolList.each{
-			print it.rolType
+		if(session.user!=null){
+			redirect url:"/user/home"
 		}
-		def nameList = ["alex","jairo"]
-		print User.withCriteria {
-			or{
-				nameList.each {
-					like('firstName',"%"+it+"%")
-					like('lastName',"%"+it+"%")
+		/*print User.get(3).firstName+" "+User.get(3).lastName;
+		 print TipoRol.get(3).rolDescription
+		 def tipoRolList = TipoRol.findAllByRolDescription("Estudiante de grupo")
+		 print TipoRol.findAllByRolDescription("Estudiante de grupo").get(0).rolType
+		 print TipoRol.findAllByRolDescriptionLike("E%").get(2).rolType
+		 tipoRolList.each{
+		 print it.rolType
+		 }
+		 def nameList = ["alex","jairo"]
+		 print User.withCriteria {
+		 or{
+		 nameList.each {
+		 like('firstName',"%"+it+"%")
+		 like('lastName',"%"+it+"%")
+		 }
+		 }
+		 }*/
+		render view:"/user/recover",model:['send':false,'emailSent':'null']
+	}
+
+	def modifypassword(){
+		if(params.token!="rwrwrwerwe22627672672yswus"||params.userid==null||User.get(params.userid)==null){
+			redirect url:"/user/home"
+		}
+		render view:"/user/modifypassword",model:['userobj':User.get(params.userid)]
+	}
+
+	def sendEmailRecover(){
+		def user = User.findByEmail(params.email)
+		def emailnotfound = false
+		if (user == null){
+			emailnotfound = true
+		}
+		def userId = emailnotfound?0:user.id
+		def error=false,success=true
+		if(!emailnotfound){
+			try{
+				sendMail {
+					to params.email
+					from "classblastservice@gmail.com"
+					subject "Recuperación de clave de acceso a classblast"
+					html "Usted ha solicitado este correo para poder recuperar el acceso a su cuenta de"+
+							" usuario. Por razones de seguridad, no es posible devolverle la clave que tenía"+
+							" previamente. Sin embargo podrá cambiar su clave de acceso mediante el siguiente "+
+							" enlace."+
+							"<a href='http://localhost:8200/ClassBlast-web/user/modifypassword?token=rwrwrwerwe22627672672yswus&userid="+userId+"'>http://localhost:8200/ClassBlast-web/user/modifypassword?token=rwrwrwerwe22627672672yswus&userid="+userId+"</a>"+
+							"<br/><br/>Cordialmente, el equipo de classblast."
 				}
 			}
-		}*/
-		print session.user.firstName
-		redirect url:"/construction"
+			catch(Exception e){
+				error=true;
+				success=false;
+			}
+		}
+		render template:"/modules/recoverform",
+		model:['send':true,
+			'success':success,
+			'error':error,
+			'emailnotfound':emailnotfound,
+			'emailSent':params.email]
 	}
+
+	def modifyPasswordProcess(){
+		def newPassword = params.contrasenia
+		User user =  User.get(params.userid)
+		user.encryptedPassword =  new SecurityUtils().hashWithMd5(newPassword)
+		user.save()
+		redirect action:"mPasswordSuccesful",params:["token":"rwrwrwerwe22627672672yswus"]
+	}
+
+	def mPasswordSuccesful(){
+		if(params.token!="rwrwrwerwe22627672672yswus"){
+			redirect url:"/user/home"
+		}
+		render view:"/user/mpasswordsuccesful"
+	}
+
 
 	def login(){
 		if(session["user"]!=null){

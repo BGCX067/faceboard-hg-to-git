@@ -5,6 +5,7 @@
 	</head>
 	<body>
 		<content tag="userinfocontent">&nbsp;</content>
+		<content tag="userchat"> &nbsp; </content>
 		<g:layoutBody />
 	</body>
 </g:applyLayout>

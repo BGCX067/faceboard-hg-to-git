@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <head>
-<g:set var="controller" value="${myDomainObjList[0]}" />
-<meta name="layout" content="basic" />
-<title>Bienvenido a ClassBlast</title>
+<meta name="layout" content="nologged" />
+<title>Bienvenido a ClassBlast - Recuperación de contraseña</title>
 </head>
 <body>
-	
+	<script type="text/javascript">
+		function validateRecoverEmail() {
+			return true;
+		}
+	</script>
+	<div id="sectionRecover">
+		<g:render template="/modules/recoverform" model="['send':send]"/>
+	</div>
+
+
 </body>
 </html>
