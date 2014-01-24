@@ -99,6 +99,10 @@ class UserUtils {
 		def userList = User.getAll()
 		def userListToReturn = []
 		
+		if(User.findAllByLoginLike("%"+search+"%")!=null){
+			userListToReturn+=User.findAllByLoginLike("%"+search+"%")
+		}
+		
 		if(User.findAllByFirstNameLike("%"+search+"%")!=null){
 			userListToReturn+=User.findAllByFirstNameLike("%"+search+"%")
 		}
