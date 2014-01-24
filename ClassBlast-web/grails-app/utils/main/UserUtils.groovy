@@ -38,6 +38,28 @@ class UserUtils {
 		}
 	}
 	
+	def registerUserAsTeacher(userName,email,firstName,lastName,password){
+		def securityUtils = new SecurityUtils()
+		def encryptedPassword = securityUtils.hashWithMd5(password)
+		try{
+			def newUser = new User(
+					login:userName,
+					email:email,
+					firstName:firstName,
+					lastName:lastName,
+					registerDate:new Date(),
+					encryptedPassword:encryptedPassword)
+			newUser.save()
+			def newRol = new Rol(rolType: TipoRol.findAllByRolDescription("Docente").get(0),
+				rolOwner: newUser)
+			newRol.save(flush:true)
+			return true
+		}
+		catch(Exception e){
+			return false
+		}
+	}
+	
 	def editUser(userName,email,firstName,lastName,userid){
 		User user =  User.get(userid)
 		

@@ -84,10 +84,7 @@
 					<g:if test="${isAdmin}">
 						<div id="sub">
 							<div id="sub-me">
-								<g:link action="setup">Editar</g:link>
-							</div>
-							<div id="sub-me">
-								<g:link action="delete">Eliminar grupo</g:link>
+								<g:link action="setup" params="${[groupid:params.groupid]}">Editar</g:link>
 							</div>
 							<div id="sub-me">
 								<g:link action="userspanel" params="${[groupid:params.groupid]}">Administrar usuarios</g:link>
@@ -112,7 +109,7 @@
 					<div
 						style="width: 70%; border: solid #8BC600; padding-top: 10px; margin: auto;">
 						<g:render template="/modules/postlistmodule"
-							model="['postList':grupo.postList]" />
+							model="['postList':grupo.postList,'isOwn':isOwn]" />
 					</div>
 				</g:if>
 				<g:else>

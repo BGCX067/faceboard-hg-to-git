@@ -117,6 +117,79 @@ class UserController {
 		redirFromProcess=true
 		redirect action:"login"
 	}
+	
+	def teacherregister(){
+		if(session["user"]!=null||params.token!="3AS223E44AAA2143343323SsasasRE"){
+			redirect(controller:"welcome")
+		}
+		if (registerSuccessFul){
+			cleanActivity()
+		}
+		if(redirFromProcess){
+			redirFromProcess = false
+		}
+		else{
+			cleanVariables()
+			cleanStackTrace()
+		}
+		[myDomainObjList: (this.findAll()),
+			validationErrors:errorValidationList,
+			execErrors:errorExecList,
+			username:userName,
+			firstname:firstName,
+			lastname:lastName,
+			email:email]
+	}
+	
+	def teacherRegisterProcess(){
+		this.cleanStackTrace()
+		userName = params.username
+		firstName = params.firstname
+		lastName = params.lastname
+		email = params.email
+		def password = params.password
+		def repassword = params.repassword
+		def validateEmpty={ field,name->
+			if(field.isEmpty()){
+				errorValidationList+="El campo ${name} está vacio. Es obligatorio"
+			}
+		}
+		def validateSize={ field,name,minSize->
+			if(field.length()<minSize){
+				errorValidationList+="El campo ${name} debe contener al menos ${minSize} caracteres"
+			}
+		}
+		validateEmpty(userName, "nombre de usuario")
+		validateEmpty(email, "email")
+		validateEmpty(password, "password")
+		validateEmpty(repassword,"repita la contraseña")
+		validateSize(userName,"nombre de usuario",5)
+		validateSize(password,"password",5)
+		validateSize(repassword,"repita la contraseña",5)
+		if(password!=repassword){
+			errorValidationList+="Las contraseñas no coinciden"
+		}
+		if(!validationUtils.validateEmail(email)){
+			errorValidationList+="Por favor ingrese un correo electrónico válido"
+		}
+
+		if(userUtils.userNameExists(userName)){
+			errorValidationList+="El nombre de usuario suministrado ya existe, por favor seleccione otro"
+		}
+		if(userUtils.emailExists(email)){
+			errorValidationList+="El email suministrado ya existe, por favor seleccione otro"
+		}
+		if(errorValidationList==[]){
+			if(userUtils.registerUserAsTeacher(userName,email,firstName,lastName,password)){
+				registerSuccessFul = true
+			}
+			else{
+				errorExecList+="Ops! tenemos un problema, intente de nuevo más tarde"
+			}
+		}
+		redirFromProcess=true
+		redirect action:"teacherregister",params:['token':"3AS223E44AAA2143343323SsasasRE"]
+	}
 
 	def logout(){
 		session.invalidate()
@@ -265,6 +338,7 @@ class UserController {
 			userid:session.user.id]
 	}
 
+	
 	def editProcess(){
 
 		this.cleanStackTrace()

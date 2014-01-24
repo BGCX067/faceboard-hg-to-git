@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="layout" content="logged" />
-<title>Crear un nuevo parche</title>
+<title>Configurar parche</title>
 </head>
 <body>
 	<g:if test="${communityNotFound}">

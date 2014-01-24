@@ -77,6 +77,24 @@ class GroupController {
 	}
 
 
+	def setup(){
+		groupId = params.groupid
+		grupo = Grupo.get(groupId==null?NO_ID:groupId)
+		def userRolInGroup = groupId!=null?
+				Rol.findByRolOwnerAndGroupRelated(session.user,grupo):null
+		def typeRolInGroup = userRolInGroup!=null?userRolInGroup.rolType.rolType:null
+		isAdmin = typeRolInGroup==ADMIN_GROUP_ROL
+		groupNotFound = (groupId==null || grupo==null)
+		if(!isAdmin && userRolInGroup!=null){
+			redirect(action:"index",model:[groupid:groupId])
+		}
+		render (view:"/group/setup",
+		model:[groupNotFound:groupNotFound,
+			grupo:grupo,
+			isAdmin:isAdmin,
+			courseList:Curso.findAll()])
+	}
+	
 	def createGroupProcess(){
 		errorList = []
 		Seccion s = new Seccion(sectionName:"seccion-linked-to-group")
@@ -108,6 +126,30 @@ class GroupController {
 			def tipoRol = TipoRol.findAllByRolType("AdministradorGrupo").get(0)
 			def rol = new Rol(rolType:tipoRol,rolOwner: user,groupRelated:grupo )
 			rol.save()
+			redirect(action:"index",params:[groupid:grupo.id])
+		}
+	}
+	
+	def editGroupProcess(){
+		errorList = []
+		def tagList = []
+		def groupName = params.group_name
+		def groupDescription = params.group_description
+		def courseRelated  = Curso.get(params.course_related)
+		def grupo = Grupo.get(params.groupid)
+		grupo.groupName = groupName
+		grupo.groupDescription = groupDescription
+		grupo.courseRelated = courseRelated
+		if (grupo.hasErrors()) {
+			respond grupo.errors,view:"setup"
+		}
+		else{
+			grupo.save();
+			if (grupo.hasErrors()) {
+				errorList = grupo.errors.allErrors
+				redirect (action:'setup',model:['groupid':groupId])
+				return
+			}
 			redirect(action:"index",params:[groupid:grupo.id])
 		}
 	}

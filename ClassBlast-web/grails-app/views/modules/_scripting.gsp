@@ -155,5 +155,6 @@
 	}
 	$(function() {
 		refreshId = setInterval(refrescarSala, 2000);
+		$("#chat_container").css("left","-800px")
 	});
 </script>
