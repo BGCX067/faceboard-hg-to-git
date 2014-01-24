@@ -63,12 +63,9 @@
 		</g:else>
 	</div>
 
-	<g:actionSubmit value="Editar mi perfil"
-		onclick="show('#edit_profile')" />
+	<g:link controller="user" action="editProfile"><br/>Editar mi perfil</g:link>
 
-	<div id="edit_profile">
-		<g:formRemote url="['action':editProfile]" name="edit_profile_fr">
-		</g:formRemote>
-	</div>
+
+
 </body>
 </html>

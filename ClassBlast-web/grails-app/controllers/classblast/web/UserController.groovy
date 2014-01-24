@@ -10,6 +10,7 @@ class UserController {
 	def errorValidationList = []
 	def errorExecList = []
 	def registerSuccessFul = false
+	def editSuccessFul = false
 	def userName,firstName,lastName,email
 	def MIN_SIZE_LENGTH = 6
 	def visitNumber=0
@@ -240,5 +241,67 @@ class UserController {
 			validationErrors:errorValidationList,
 			execErrors:errorExecList,
 			username:userName]
+	}
+
+	def editProfile(){
+
+		if (true){
+			cleanActivity()
+		}
+		if(redirFromProcess){
+			redirFromProcess = false
+		}
+		else{
+			cleanVariables()
+			cleanStackTrace()
+		}
+		[myDomainObjList: (this.findAll()),
+			validationErrors:errorValidationList,
+			execErrors:errorExecList,
+			username:session.user.login,
+			firstname:session.user.firstName,
+			lastname:session.user.lastName,
+			email:session.user.email,
+			userid:session.user.id]
+	}
+
+	def editProcess(){
+
+		this.cleanStackTrace()
+		userName = params.username
+		firstName = params.firstname
+		lastName = params.lastname
+		email = params.email
+
+		def validateEmpty={ field,name->
+			if(field.isEmpty()){
+				errorValidationList+="El campo ${name} está vacio. Es obligatorio"
+			}
+		}
+		def validateSize={ field,name,minSize->
+			if(field.length()<minSize){
+				errorValidationList+="El campo ${name} debe contener al menos ${minSize} caracteres"
+			}
+		}
+		validateEmpty(userName, "nombre de usuario")
+		validateEmpty(email, "email")
+
+		validateSize(userName,"nombre de usuario",5)
+
+		if(!validationUtils.validateEmail(email)){
+			errorValidationList+="Por favor ingrese un correo electrónico válido"
+		}
+
+		if(userUtils.userNameExists(userName)&&userName!=session.user.login){
+			errorValidationList+="El nombre de usuario suministrado ya existe, por favor seleccione otro"
+		}
+//		if(userUtils.emailExists(email)){
+//			errorValidationList+="El email suministrado ya existe, por favor seleccione otro"
+//		}
+		if(errorValidationList==[]){
+			userUtils.editUser(userName,email,firstName,lastName,params.userid)		
+		}
+		redirFromProcess=true
+		redirect action:"editProfile",model:[editSuccessful:errorValidationList==[]]
 	}
 }

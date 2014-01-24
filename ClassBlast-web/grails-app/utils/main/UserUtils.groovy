@@ -37,6 +37,25 @@ class UserUtils {
 			return false
 		}
 	}
+	
+	def editUser(userName,email,firstName,lastName,userid){
+		User user =  User.get(userid)
+		
+		try{			
+					user.login=userName
+					user.email=email
+					user.firstName=firstName
+					user.lastName=lastName
+					
+			user.save()
+			session.user=user
+			return true
+		}
+		catch(Exception e){
+			return false
+		}
+	}
+	
 	def validateLoginData(userName,password){
 		def securityUtils = new SecurityUtils()
 		def encryptedPassword = securityUtils.hashWithMd5(password)
